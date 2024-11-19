@@ -1,0 +1,21 @@
+.title-bar{
+    -fx-background-color: #bebebe;
+}
+
+.primary{
+    -fx-background-color: #ffff;
+}
+
+
+
+.btn-primary{
+    -fx-border-radius: 0;
+    -fx-background-color: #F8F9FA;
+    -fx-text-fill: #202124;
+}
+
+
+
+.txt-primary{
+    -fx-text-fill: #202124;
+}

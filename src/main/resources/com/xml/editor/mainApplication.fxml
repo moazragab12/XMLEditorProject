@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
+
+<AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="title-bar" stylesheets="@styles/dark_mode.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xml.editor.mainApplication">
+   <children>
+      <VBox layoutY="58.0" prefHeight="562.0" prefWidth="74.0" styleClass="title-bar">
+         <children>
+            <Button fx:id="but_play" alignment="CENTER" mnemonicParsing="false" onAction="#but_play" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../photoes/start_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="but_correct" alignment="CENTER" mnemonicParsing="false" onAction="#but_correct" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
+               <graphic>
+                  <ImageView fx:id="image_change11" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../photoes/repair_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="but_format" alignment="CENTER" mnemonicParsing="false" onAction="#but_format" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
+               <graphic>
+                  <ImageView fx:id="image_change12" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../photoes/formatting-icon.jpg" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="but_minify" alignment="CENTER" mnemonicParsing="false" onAction="#but_minify" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
+               <graphic>
+                  <ImageView fx:id="image_change13" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../photoes/minify_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="but_json" alignment="CENTER" mnemonicParsing="false" onAction="#but_json" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
+               <graphic>
+                  <ImageView fx:id="image_change14" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../photoes/json_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="but_comp" alignment="CENTER" mnemonicParsing="false" onAction="#but_comp" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
+               <graphic>
+                  <ImageView fx:id="image_change15" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../photoes/como_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="but_decomp" alignment="CENTER" mnemonicParsing="false" onAction="#but_decomp" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
+               <graphic>
+                  <ImageView fx:id="image_change16" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../photoes/decompress_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btn_change_mode17" alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
+               <graphic>
+                  <ImageView fx:id="image_change17" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../photoes/start_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btn_change_mode18" alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
+               <graphic>
+                  <ImageView fx:id="image_change18" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../photoes/start_icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <padding>
+            <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+         </padding></VBox>
+      <ImageView fitHeight="82.0" fitWidth="79.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../photoes/logo2.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="new_file_but" alignment="CENTER" layoutX="85.0" layoutY="6.0" mnemonicParsing="false" onAction="#new_file_but" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../photoes/New_File_icon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="import_but" alignment="CENTER" layoutX="150.0" layoutY="6.0" mnemonicParsing="false" onAction="#import_but" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../photoes/icons-import.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="search_but" alignment="CENTER" layoutX="215.0" layoutY="6.0" mnemonicParsing="false" onAction="#search_but" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
+         <graphic>
+            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../photoes/icons-search.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="btn_change_mode" alignment="CENTER" layoutX="1204.0" layoutY="-12.0" mnemonicParsing="false" onAction="#btn_change_mode" prefHeight="48.0" prefWidth="66.0" style="-fx-background-color: none;">
+         <graphic>
+            <ImageView fx:id="image_change" fitHeight="78.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../photoes/light_mode_icon.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <TextFlow fx:id="output" layoutX="682.0" layoutY="65.0" prefHeight="530.0" prefWidth="580.0" styleClass="btn-primary" />
+      <TextFlow fx:id="cmd" layoutX="1.0" layoutY="603.0" prefHeight="117.0" prefWidth="1280.0" styleClass="primary" textAlignment="CENTER" />
+      <TextArea fx:id="input" layoutX="86.0" layoutY="65.0" prefHeight="530.0" prefWidth="570.0" promptText="write the code here or import file">
+         <font>
+            <Font size="20.0" />
+         </font></TextArea>
+      <Label layoutX="562.0" layoutY="5.0" prefHeight="17.0" prefWidth="211.0" text="XML Editor">
+         <font>
+            <Font size="38.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </textFill></Label>
+
+   </children>
+</AnchorPane>

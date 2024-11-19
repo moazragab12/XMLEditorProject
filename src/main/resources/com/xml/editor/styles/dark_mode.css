@@ -1,0 +1,19 @@
+.title-bar{
+    -fx-background-color: #303443;
+}
+
+.primary{
+    -fx-background-color: #202124;
+}
+
+
+
+.btn-primary{
+    -fx-background-color: #303134;
+    -fx-text-fill: #ffff;
+}
+
+.txt-primary{
+    -fx-font-family: "Popping";
+    -fx-text-fill: #ffff;
+}
