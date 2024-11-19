@@ -27,13 +27,13 @@ public class mainApplication {
             // change to dark
             scene.getRoot().getStylesheets().clear();
             scene.getRoot().getStylesheets().add(getClass().getResource("/com/xml/editor/styles/dark_mode.css").toExternalForm());
-           // image_change.setImage(new Image("/photoes/dark_mode_icon.png"));
+            image_change.setImage(new Image(String.valueOf(getClass().getResource("/photoes/light_mode_icon.png"))));
 
         } else {
             // change to light
             scene.getRoot().getStylesheets().clear();
             scene.getRoot().getStylesheets().add(getClass().getResource("/com/xml/editor/styles/light_mode.css").toExternalForm());
-           // image_change.setImage(new Image("/photoes/light_mode_icon.png"));
+            image_change.setImage(new Image(String.valueOf(getClass().getResource("/photoes/dark_mode_icon.png"))));
         }
         isLightMode = !isLightMode;
     }
