@@ -157,7 +157,7 @@
             <Font size="38.0" />
          </font>
          <textFill>
-            <LinearGradient endX="1.0" endY="1.0">
+            <LinearGradient endX="0.5450236966824644" endY="1.0">
                <stops>
                   <Stop>
                      <color>
