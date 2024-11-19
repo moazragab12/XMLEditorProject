@@ -19,3 +19,12 @@
 .txt-primary{
     -fx-text-fill: #202124;
 }
+
+.text-area {
+-fx-border-width: 0px; /* Sets the border thickness */
+    -fx-border-radius: 0px; /* Rounds the corners of the border */
+    -fx-background-radius: 0px; /* Matches the border radius */
+    -fx-focus-color: white; /* Change the border color when focused */
+        -fx-faint-focus-color: white; /* Adjust the faint outer focus color */
+
+}

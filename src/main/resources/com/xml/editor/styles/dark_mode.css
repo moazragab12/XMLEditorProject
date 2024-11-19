@@ -17,3 +17,15 @@
     -fx-font-family: "Popping";
     -fx-text-fill: #ffff;
 }
+.text-area {
+    -fx-control-inner-background: rgb(48, 49, 52);
+   -fx-background-color: rgb(48, 49, 52);
+    -fx-text-fill: white;
+    -fx-border-color: rgb(48, 49, 52); /* Changes the border color */
+    -fx-border-width: 0px; /* Sets the border thickness */
+    -fx-border-radius: 0px; /* Rounds the corners of the border */
+    -fx-background-radius: 0px; /* Matches the border radius */
+    -fx-focus-color: rgb(48, 49, 52); /* Change the border color when focused */
+        -fx-faint-focus-color: rgb(48, 49, 52); /* Adjust the faint outer focus color */
+
+}

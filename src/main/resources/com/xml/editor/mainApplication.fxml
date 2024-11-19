@@ -148,7 +148,7 @@
          </graphic></Button>
       <TextFlow fx:id="output" layoutX="682.0" layoutY="65.0" prefHeight="530.0" prefWidth="580.0" styleClass="btn-primary" />
       <TextFlow fx:id="cmd" layoutX="1.0" layoutY="603.0" prefHeight="117.0" prefWidth="1280.0" styleClass="primary" textAlignment="CENTER" />
-      <TextArea fx:id="input" layoutX="86.0" layoutY="65.0" prefHeight="530.0" prefWidth="570.0" promptText="write the code here or import file">
+      <TextArea fx:id="input" layoutX="86.0" layoutY="65.0" prefHeight="530.0" prefWidth="570.0" promptText="write the code here or import file" text="dfggdfgdffgdfg">
          <font>
             <Font size="20.0" />
          </font></TextArea>
