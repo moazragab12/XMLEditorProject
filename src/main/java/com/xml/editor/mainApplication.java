@@ -39,9 +39,14 @@ public class mainApplication {
     }
 
     public void but_decomp(ActionEvent actionEvent) {
+
+
     }
 
     public void but_comp(ActionEvent actionEvent) {
+
+
+
     }
 
     public void but_json(ActionEvent actionEvent) {
