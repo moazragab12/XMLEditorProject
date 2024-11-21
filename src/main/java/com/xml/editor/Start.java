@@ -18,8 +18,10 @@ public class Start extends Application {
         stage.show();
         stage.setTitle(" XML Editor");
         stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/photoes/logo1.png.jpg")).toExternalForm()));
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.centerOnScreen();
+        stage.setMinWidth(1300); // Minimum width for the scene
+        stage.setMinHeight(760); // Minimum height for the scene
     }
 
     public static void main(String[] args) {

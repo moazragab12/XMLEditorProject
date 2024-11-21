@@ -22,11 +22,18 @@
 }
 
 .text-area {
-
+-fx-text-fill: rgb(0, 0, 0);
+    -fx-border-color: white; /* Changes the border color */
+-fx-control-inner-background: white;
+   -fx-background-color: white;
 -fx-border-width: 0px; /* Sets the border thickness */
     -fx-border-radius: 0px; /* Rounds the corners of the border */
     -fx-background-radius: 0px; /* Matches the border radius */
     -fx-focus-color: white; /* Change the border color when focused */
         -fx-faint-focus-color: white; /* Adjust the faint outer focus color */
 
+}
+.scroll-bar:vertical {
+    -fx-opacity: 0;
+    -fx-color:white;
 }

@@ -1,20 +1,20 @@
 package com.xml.editor;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
+
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
+
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
+
 import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
 
@@ -36,7 +36,8 @@ public class mainApplication implements Initializable {
     public TextFlow cmd;
     public TextArea input;
     public AnchorPane background;
-    public ScrollPane scrollpan;
+    public ScrollPane is;
+
     boolean isLightMode = false;
     FileChooser fileChooser = new FileChooser();
 
@@ -421,13 +422,15 @@ public class mainApplication implements Initializable {
     }
 
     public void zoomIn_but2(ActionEvent actionEvent) {
-        input.setFont(Font.font(++fontSize));
-        output.setFont(Font.font(++fontSize));
+        ++fontSize;
+        input.setFont(Font.font(fontSize));
+        output.setFont(Font.font(fontSize));
     }
 
     public void zoomOut_but3(ActionEvent actionEvent) {
-        input.setFont(Font.font(--fontSize));
-        output.setFont(Font.font(--fontSize));
+        --fontSize;
+        input.setFont(Font.font(fontSize));
+        output.setFont(Font.font(fontSize));
     }
     public void redo_but(ActionEvent actionEvent) {
 
@@ -447,14 +450,10 @@ public class mainApplication implements Initializable {
         //next phase
     }
 
-    public void addational_icon(ActionEvent actionEvent) {
-        //next phase
-    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        scrollpan.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Hide vertical scrollbar
         output.setEditable(false);
-
 
 
     }

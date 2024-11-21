@@ -29,4 +29,6 @@
     -fx-focus-color: rgb(48, 49, 52); /* Change the border color when focused */
         -fx-faint-focus-color: rgb(48, 49, 52); /* Adjust the faint outer focus color */
 }
-
+.scroll-bar:vertical {
+    -fx-opacity: 0;
+}
