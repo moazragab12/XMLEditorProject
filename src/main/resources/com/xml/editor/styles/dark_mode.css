@@ -4,6 +4,7 @@
 
 .primary{
     -fx-background-color: #202124;
+
 }
 
 
@@ -27,5 +28,5 @@
     -fx-background-radius: 0px; /* Matches the border radius */
     -fx-focus-color: rgb(48, 49, 52); /* Change the border color when focused */
         -fx-faint-focus-color: rgb(48, 49, 52); /* Adjust the faint outer focus color */
-
 }
+

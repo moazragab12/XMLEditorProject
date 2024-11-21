@@ -4,6 +4,7 @@
 
 .primary{
     -fx-background-color: #ffff;
+
 }
 
 
@@ -21,6 +22,7 @@
 }
 
 .text-area {
+
 -fx-border-width: 0px; /* Sets the border thickness */
     -fx-border-radius: 0px; /* Rounds the corners of the border */
     -fx-background-radius: 0px; /* Matches the border radius */
