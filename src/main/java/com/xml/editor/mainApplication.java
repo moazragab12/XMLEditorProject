@@ -31,10 +31,10 @@ public class mainApplication implements Initializable {
     public TextArea inputArea;
 
 
-    private boolean isLightMode = false;
-    private FileChooser fileChooser = new FileChooser();
-    private File selectedFile;
-    private int fontSize = 12;
+     boolean isLightMode = false;
+     FileChooser fileChooser = new FileChooser();
+     File selectedFile;
+     int fontSize = 12;
 
     // Helper Method: Updates feedback in the feedbackFlow
     private void updateFeedback(String message) {
@@ -148,6 +148,9 @@ public class mainApplication implements Initializable {
 
     // Import File
     public void importFile(ActionEvent actionEvent) {
+        fontSize=12;
+        inputArea.setFont(Font.font(fontSize));
+        outputArea.setFont(Font.font(fontSize));
         setupFileChooser();
         selectedFile = fileChooser.showOpenDialog(themeToggleImage.getScene().getWindow());
         if (selectedFile != null) {
@@ -222,7 +225,7 @@ public class mainApplication implements Initializable {
     }
 
     private void setupFileChooser() {
-        fileChooser.setInitialDirectory(new File(System.getProperty("user.home") + "/Desktop"));
+       // fileChooser.setInitialDirectory(new File(System.getProperty("user.home") + "/Desktop"));
         fileChooser.getExtensionFilters().clear();
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("XML Files", "*.xml"),

@@ -176,24 +176,6 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="undo_but" alignment="CENTER" mnemonicParsing="false" onAction="#undo_but" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
-                     <graphic>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../photoes/undo_icon.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button fx:id="redo_but" alignment="CENTER" mnemonicParsing="false" onAction="#redo_but" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
-                     <graphic>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../photoes/redo_con.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
                </children>
             </HBox>
             <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
