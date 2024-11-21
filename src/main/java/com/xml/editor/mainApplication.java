@@ -157,9 +157,10 @@ public class mainApplication implements Initializable {
             outputArea.clear();
             try (Scanner scanner = new Scanner(selectedFile)) {
                 inputArea.clear();
+                String temp="";
                 while (scanner.hasNextLine()) {
-                    inputArea.appendText(scanner.nextLine() + "\n");
-                }
+                    temp=temp+scanner.nextLine() + "\n";
+                }inputArea.appendText(temp);
                 updateFeedback("File imported: " + selectedFile.getName());
             } catch (IOException e) {
                 updateFeedback("Error reading file: " + e.getMessage());
@@ -185,6 +186,7 @@ public class mainApplication implements Initializable {
 
     // Save As New File
     public void saveAsFile(ActionEvent actionEvent) {
+        setupFileChooser();
         if (!outputArea.getText().isEmpty()) {
             File saveFile = fileChooser.showSaveDialog(themeToggleImage.getScene().getWindow());
             if (saveFile != null) {
@@ -225,7 +227,7 @@ public class mainApplication implements Initializable {
     }
 
     private void setupFileChooser() {
-       // fileChooser.setInitialDirectory(new File(System.getProperty("user.home") + "/Desktop"));
+      // fileChooser.setInitialDirectory(new File(System.getProperty("user.home") + "/Desktop"));
         fileChooser.getExtensionFilters().clear();
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("XML Files", "*.xml"),
