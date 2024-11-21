@@ -11,16 +11,22 @@ public interface Functions {
     static  String[] format(String[] s){
         return s;
     }
-    static  String[] xmltoJson(String[] s){
+    static  String[] xmlToJson(String[] s){
         return s;
     }
     static  String[] minify(String[] s){
-        return s;
+
+        String temp=String.join("",s);
+        temp=temp.replace(" ","");
+        String[] s_minified=new String[1];
+        s_minified[0]=temp;
+
+        return s_minified;
     }
     static  String[] comp(String[] s){
         return s;
     }
-    static  String[] decomp(String[] s){
+    static  String[] decompress(String[] s){
         return s;
     }
 }

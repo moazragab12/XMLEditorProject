@@ -3,11 +3,9 @@ package com.xml.editor;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -77,7 +75,7 @@ public class mainApplication implements Initializable {
     public void decompressFile(ActionEvent actionEvent) {
         if (!isInputEmpty()) {
             String[] inputLines = inputArea.getText().split("\n");
-            String[] output = Functions.decomp(inputLines);
+            String[] output = Functions.decompress(inputLines);
             outputArea.setText(String.join("\n", output));
             updateFeedback("File decompressed");
         }
@@ -97,7 +95,7 @@ public class mainApplication implements Initializable {
     public void convertToJson(ActionEvent actionEvent) {
         if (!isInputEmpty()) {
             String[] inputLines = inputArea.getText().split("\n");
-            String[] output = Functions.xmltoJson(inputLines);
+            String[] output = Functions.xmlToJson(inputLines);
             outputArea.setText(String.join("\n", output));
             updateFeedback("File converted to JSON");
         }
