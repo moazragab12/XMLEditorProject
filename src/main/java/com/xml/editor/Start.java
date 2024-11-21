@@ -21,7 +21,7 @@ public class Start extends Application {
         stage.setResizable(true);
         stage.centerOnScreen();
         stage.setMinWidth(1300); // Minimum width for the scene
-        stage.setMinHeight(760); // Minimum height for the scene
+        stage.setMinHeight(770); // Minimum height for the scene
     }
 
     public static void main(String[] args) {

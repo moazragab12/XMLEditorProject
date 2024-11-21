@@ -1,34 +1,70 @@
-.title-bar{
+/* General Styles */
+.title-bar {
     -fx-background-color: #303443;
+    -fx-padding: 10px; /* Adds some space around the title bar */
 }
 
-.primary{
+.primary {
     -fx-background-color: #202124;
-
+    -fx-padding: 10px; /* Adds space to the primary content */
 }
 
-
-
-.btn-primary{
+.btn-primary {
     -fx-background-color: #303134;
-    -fx-text-fill: #ffff;
+    -fx-text-fill: white;
+    -fx-border-radius: 5px; /* Rounded corners for the button */
+    -fx-padding: 8px 16px; /* Adds padding to the button */
+    -fx-font-size: 14px; /* Sets a more readable font size */
+    -fx-effect: dropshadow(gaussian, #000000, 5, 0.5, 0, 2); /* Adds a subtle shadow for depth */
+    -fx-transition: background-color 0.3s, -fx-background-color 0.3s; /* Smooth background color transition */
 }
 
-.txt-primary{
-    -fx-font-family: "Popping";
-    -fx-text-fill: #ffff;
+.btn-primary:hover {
+    -fx-background-color: #40444F; /* Lightens the background on hover */
 }
+
+.btn-primary:pressed {
+    -fx-background-color: #1F2328; /* Darkens the background on press */
+}
+
+.txt-primary {
+    -fx-font-family: "Poppins", sans-serif; /* Fix typo in font name */
+    -fx-text-fill: white;
+    -fx-font-size: 14px; /* Adds consistent font size */
+}
+
 .text-area {
     -fx-control-inner-background: rgb(48, 49, 52);
-   -fx-background-color: rgb(48, 49, 52);
+    -fx-background-color: rgb(48, 49, 52);
     -fx-text-fill: white;
-    -fx-border-color: rgb(48, 49, 52); /* Changes the border color */
-    -fx-border-width: 0px; /* Sets the border thickness */
-    -fx-border-radius: 0px; /* Rounds the corners of the border */
-    -fx-background-radius: 0px; /* Matches the border radius */
-    -fx-focus-color: rgb(48, 49, 52); /* Change the border color when focused */
-        -fx-faint-focus-color: rgb(48, 49, 52); /* Adjust the faint outer focus color */
+    -fx-border-color: rgb(48, 49, 52);
+    -fx-border-width: 0px;
+    -fx-border-radius: 5px; /* Adds rounded corners for better visuals */
+    -fx-background-radius: 5px; /* Rounded corners */
+    -fx-focus-color: #50575D; /* Lighter border color on focus */
+    -fx-faint-focus-color: rgb(48, 49, 52);
+
 }
+
+.text-area:focused {
+    -fx-border-color: #5F6368; /* Focused border color */
+}
+
 .scroll-bar:vertical {
-    -fx-opacity: 0;
+    -fx-opacity: 0; /* Keeps the scrollbar hidden, but can be shown on hover if needed */
+}
+
+/* Optional Hover effect on the primary panel */
+.primary:hover {
+    -fx-background-color: #2A2D33; /* Darken the primary container on hover */
+}
+
+/* Add animations for better UI experience */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
 }

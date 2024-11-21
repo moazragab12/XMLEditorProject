@@ -1,39 +1,78 @@
-.title-bar{
+/* General Styles */
+.title-bar {
     -fx-background-color: #bebebe;
+    -fx-padding: 10px; /* Adds space around the title bar */
 }
 
-.primary{
-    -fx-background-color: #ffff;
-
+.primary {
+    -fx-background-color: #ffffff;
+    -fx-padding: 15px; /* Adds padding around the primary content */
 }
 
-
-
-.btn-primary{
-    -fx-border-radius: 0;
+/* Button Styles */
+.btn-primary {
     -fx-background-color: #F8F9FA;
     -fx-text-fill: #202124;
+    -fx-border-radius: 5px; /* Rounded corners for the button */
+    -fx-padding: 8px 16px; /* Adds padding to the button */
+    -fx-font-size: 14px; /* Consistent font size */
+    -fx-effect: dropshadow(gaussian, #000000, 5, 0.5, 0, 2); /* Adds subtle shadow */
+    -fx-transition: background-color 0.3s ease, -fx-background-color 0.3s ease; /* Smooth transition on hover */
 }
 
+.btn-primary:hover {
+    -fx-background-color: #e9ecef; /* Lightens on hover */
+}
 
+.btn-primary:pressed {
+    -fx-background-color: #dee2e6; /* Darkens on press */
+}
 
-.txt-primary{
+/* Text Styles */
+.txt-primary {
     -fx-text-fill: #202124;
+    -fx-font-size: 14px; /* Makes text more readable */
+    -fx-font-family: "Segoe UI", sans-serif; /* Modern font */
 }
 
+/* Text Area Styles */
 .text-area {
--fx-text-fill: rgb(0, 0, 0);
-    -fx-border-color: white; /* Changes the border color */
--fx-control-inner-background: white;
-   -fx-background-color: white;
--fx-border-width: 0px; /* Sets the border thickness */
-    -fx-border-radius: 0px; /* Rounds the corners of the border */
-    -fx-background-radius: 0px; /* Matches the border radius */
-    -fx-focus-color: white; /* Change the border color when focused */
-        -fx-faint-focus-color: white; /* Adjust the faint outer focus color */
+    -fx-text-fill: #000000; /* Black text for readability */
+    -fx-border-color: #d1d1d1; /* Light gray border */
+    -fx-border-width: 1px; /* Thin border for subtle separation */
+    -fx-border-radius: 5px; /* Rounded corners */
+    -fx-background-color: #ffffff; /* White background */
 
+    -fx-focus-color: #a9b3b9; /* Light gray color when focused */
+    -fx-faint-focus-color: #e0e5e8; /* Subtle outer focus color */
 }
+
+.text-area:focused {
+    -fx-border-color: #007bff; /* Blue border when focused */
+}
+
+/* Scrollbar Styles */
 .scroll-bar:vertical {
-    -fx-opacity: 0;
-    -fx-color:white;
+    -fx-opacity: 0.6; /* Slightly visible scrollbar */
+    -fx-background-color: #f8f9fa; /* Light background for the scrollbar */
+    -fx-base: #dcdfe1; /* Subtle color for scrollbar base */
+}
+
+.scroll-bar:vertical:hover {
+    -fx-opacity: 1; /* Make scrollbar fully visible on hover */
+}
+
+/* Optional Hover Effect on the primary panel */
+.primary:hover {
+    -fx-background-color: #f1f1f1; /* Lightens when hovered */
+}
+
+/* Optional smooth transition effect for elements */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
 }

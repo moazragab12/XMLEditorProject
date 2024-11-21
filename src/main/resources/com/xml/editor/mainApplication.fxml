@@ -13,9 +13,9 @@
 
 <AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="title-bar" stylesheets="@styles/dark_mode.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xml.editor.mainApplication">
    <children>
-      <VBox layoutY="58.0" prefHeight="562.0" prefWidth="74.0" styleClass="title-bar">
+      <VBox layoutY="58.0" prefHeight="562.0" prefWidth="74.0" styleClass="title-bar" AnchorPane.bottomAnchor="100.0" AnchorPane.topAnchor="58.0">
          <children>
-            <Button fx:id="but_play" alignment="CENTER" mnemonicParsing="false" onAction="#but_play" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
+            <Button fx:id="but_play" alignment="CENTER" mnemonicParsing="false" onAction="#validateFile" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
                <graphic>
                   <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -24,7 +24,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="but_correct" alignment="CENTER" mnemonicParsing="false" onAction="#but_correct" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
+            <Button fx:id="but_correct" alignment="CENTER" mnemonicParsing="false" onAction="#repairFile" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
                <graphic>
                   <ImageView fx:id="image_change11" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -33,7 +33,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="but_format" alignment="CENTER" mnemonicParsing="false" onAction="#but_format" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
+            <Button fx:id="but_format" alignment="CENTER" mnemonicParsing="false" onAction="#formatFile" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
                <graphic>
                   <ImageView fx:id="image_change12" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -42,7 +42,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="but_minify" alignment="CENTER" mnemonicParsing="false" onAction="#but_minify" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
+            <Button fx:id="but_minify" alignment="CENTER" mnemonicParsing="false" onAction="#minifyFile" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
                <graphic>
                   <ImageView fx:id="image_change13" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -51,7 +51,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="but_json" alignment="CENTER" mnemonicParsing="false" onAction="#but_json" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
+            <Button fx:id="but_json" alignment="CENTER" mnemonicParsing="false" onAction="#convertToJson" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
                <graphic>
                   <ImageView fx:id="image_change14" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -60,7 +60,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="but_comp" alignment="CENTER" mnemonicParsing="false" onAction="#but_comp" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
+            <Button fx:id="but_comp" alignment="CENTER" mnemonicParsing="false" onAction="#compressFile" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
                <graphic>
                   <ImageView fx:id="image_change15" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -69,7 +69,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="but_decomp" alignment="CENTER" mnemonicParsing="false" onAction="#but_decomp" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
+            <Button fx:id="but_decomp" alignment="CENTER" mnemonicParsing="false" onAction="#decompressFile" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
                <graphic>
                   <ImageView fx:id="image_change16" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -113,7 +113,7 @@
             </ImageView>
             <HBox alignment="CENTER">
                <children>
-                  <Button fx:id="new_file_but" alignment="CENTER" mnemonicParsing="false" onAction="#new_file_but" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
+                  <Button fx:id="new_file_but" alignment="CENTER" mnemonicParsing="false" onAction="#createNewFile" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -122,7 +122,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="import_but" alignment="CENTER" mnemonicParsing="false" onAction="#import_but" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
+                  <Button fx:id="import_but" alignment="CENTER" mnemonicParsing="false" onAction="#importFile" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -131,7 +131,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="save_but" alignment="CENTER" mnemonicParsing="false" onAction="#save_but" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
+                  <Button fx:id="save_but" alignment="CENTER" mnemonicParsing="false" onAction="#saveFile" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -140,7 +140,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="saveAs_but" alignment="CENTER" mnemonicParsing="false" onAction="#saveAs_but" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
+                  <Button fx:id="saveAs_but" alignment="CENTER" mnemonicParsing="false" onAction="#saveAsFile" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -149,7 +149,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="zoomIn_but2" alignment="CENTER" mnemonicParsing="false" onAction="#zoomIn_but2" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
+                  <Button fx:id="zoomIn_but2" alignment="CENTER" mnemonicParsing="false" onAction="#zoomIn" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -158,7 +158,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button fx:id="zoomOut_but3" alignment="CENTER" mnemonicParsing="false" onAction="#zoomOut_but3" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
+                  <Button fx:id="zoomOut_but3" alignment="CENTER" mnemonicParsing="false" onAction="#zoomOut" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -197,9 +197,9 @@
                </children>
             </HBox>
             <Pane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-            <Button fx:id="btn_change_mode" alignment="CENTER" mnemonicParsing="false" onAction="#btn_change_mode" prefHeight="48.0" prefWidth="66.0" style="-fx-background-color: none;">
+            <Button fx:id="btn_change_mode" alignment="CENTER" mnemonicParsing="false" onAction="#toggleTheme" prefHeight="48.0" prefWidth="66.0" style="-fx-background-color: none;">
                <graphic>
-                  <ImageView fx:id="image_change" fitHeight="78.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="themeToggleImage" fitHeight="78.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../photoes/light_mode_icon.png" />
                      </image>
@@ -208,9 +208,13 @@
             </Button>
          </children>
       </HBox>
-      <TextArea fx:id="input" layoutX="86.0" layoutY="65.0" maxHeight="1000.0" maxWidth="1000.0" prefHeight="530.0" prefWidth="570.0" promptText="Enter here" wrapText="true" AnchorPane.bottomAnchor="125.0" AnchorPane.topAnchor="65.0" />
-      <TextArea fx:id="output" layoutX="686.0" layoutY="65.0" prefHeight="530.0" prefWidth="580.0" promptText="Output here" wrapText="true" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="686.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="65.0" />
-      <TextFlow fx:id="cmd" layoutX="1.0" layoutY="603.0" lineSpacing="3.0" prefHeight="117.0" prefWidth="1280.0" styleClass="primary" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" />
+      <HBox layoutX="86.0" layoutY="65.0" spacing="20.0" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="86.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="65.0">
+         <children>
+            <TextArea fx:id="inputArea" prefHeight="530.0" prefWidth="580.0" promptText="Write code here" wrapText="true" HBox.hgrow="ALWAYS" />
+            <TextArea fx:id="outputArea" prefHeight="530.0" prefWidth="580.0" promptText="Output here" wrapText="true" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+      <TextFlow fx:id="feedbackFlow" layoutX="1.0" layoutY="603.0" lineSpacing="3.0" prefHeight="117.0" prefWidth="1280.0" styleClass="primary" textAlignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0" />
 
    </children>
 </AnchorPane>
