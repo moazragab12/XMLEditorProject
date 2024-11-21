@@ -53,7 +53,7 @@
 
 /* Scrollbar Styles */
 .scroll-bar:vertical {
-    -fx-opacity: 0.6; /* Slightly visible scrollbar */
+    -fx-opacity: 0; /* Slightly visible scrollbar */
     -fx-background-color: #f8f9fa; /* Light background for the scrollbar */
     -fx-base: #dcdfe1; /* Subtle color for scrollbar base */
 }
