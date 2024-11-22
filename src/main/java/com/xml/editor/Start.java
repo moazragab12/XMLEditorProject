@@ -25,7 +25,15 @@ public class Start extends Application {
     }
 
     public static void main(String[] args) {
+        // CLI PART
+//        if (args.length == 0) {
+//            System.out.println("No command provided. Please specify an action.");
+//            return;
+//        }
 
+        CommandLine cli = new CommandLine(args);
+        cli.execute();
+        // END OF CLI PART
         launch();
     }
 }
