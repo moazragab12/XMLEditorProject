@@ -15,7 +15,11 @@ public interface Functions {
         return s;
     }
     static  String[] minify(String[] s){
-       return s;
+        String temp=String.join("",s);
+        temp=temp.replace(" ","");
+        String[] s_minified=new String[1];
+        s_minified[0]=temp;
+        return s_minified;
     }
     static  String[] comp(String[] s){
         return s;
