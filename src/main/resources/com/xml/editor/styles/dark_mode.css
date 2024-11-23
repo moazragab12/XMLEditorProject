@@ -34,20 +34,20 @@
 }
 
 .text-area {
-    -fx-control-inner-background: rgb(48, 49, 52);
-    -fx-background-color: rgb(48, 49, 52);
+    -fx-control-inner-background: #303134;
+    -fx-background-color: #303134;
     -fx-text-fill: white;
-    -fx-border-color: rgb(48, 49, 52);
+    -fx-border-color: #303134;
     -fx-border-width: 0px;
-    -fx-border-radius: 5px; /* Adds rounded corners for better visuals */
-    -fx-background-radius: 5px; /* Rounded corners */
-    -fx-focus-color: #50575D; /* Lighter border color on focus */
-    -fx-faint-focus-color: rgb(48, 49, 52);
+    -fx-border-radius: 0px; /* Adds rounded corners for better visuals */
+    -fx-background-radius: 0px; /* Rounded corners */
+    -fx-focus-color: #303134; /* Lighter border color on focus */
+    -fx-faint-focus-color: #303134;
 
 }
 
 .text-area:focused {
-    -fx-border-color: #5F6368; /* Focused border color */
+    -fx-border-color: #303134; /* Focused border color */
 }
 
 .scroll-bar:vertical {

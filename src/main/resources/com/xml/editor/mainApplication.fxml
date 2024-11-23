@@ -253,10 +253,36 @@
             </Button>
          </children>
       </HBox>
-      <HBox layoutX="118.0" layoutY="83.0" prefHeight="459.0" prefWidth="1125.0" spacing="20.0" AnchorPane.bottomAnchor="199.39999999999986" AnchorPane.leftAnchor="118.0" AnchorPane.rightAnchor="58.00000000000023" AnchorPane.topAnchor="83.0">
+      <HBox layoutX="139.20000000000002" layoutY="104.80000000000001" spacing="20.0" AnchorPane.bottomAnchor="205.0" AnchorPane.leftAnchor="129.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="94.0">
          <children>
-            <TextArea fx:id="inputArea" prefHeight="530.0" prefWidth="580.0" promptText="Write code here" styleClass="text-area" wrapText="true" HBox.hgrow="ALWAYS" />
-            <TextArea fx:id="outputArea" prefHeight="530.0" prefWidth="580.0" promptText="Output here" wrapText="true" HBox.hgrow="ALWAYS" />
+            <HBox HBox.hgrow="ALWAYS">
+               <children>
+                  <ScrollPane fx:id="spi" prefHeight="400.0" prefWidth="40.0" styleClass="text-area">
+                     <content>
+                        <VBox fx:id="lineNumbers1" prefHeight="500.0" prefWidth="50.0" styleClass="text-area">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+                  <TextArea fx:id="inputArea" prefHeight="400.0" prefWidth="510.0" promptText="Write code here" styleClass="text-area" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            <HBox HBox.hgrow="ALWAYS">
+               <children>
+                  <ScrollPane fx:id="spo" prefHeight="482.0" prefWidth="40.0" styleClass="text-area">
+                     <content>
+                        <VBox fx:id="lineNumbers11" prefHeight="500.0" prefWidth="40.0" styleClass="text-area">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+                  <TextArea fx:id="outputArea" prefHeight="400.0" prefWidth="510.0" promptText="Output here" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
          </children>
       </HBox>
       <TextFlow fx:id="feedbackFlow" layoutX="197.6" layoutY="611.0" lineSpacing="3.0" prefHeight="170.0" prefWidth="950.0" styleClass="primary" textAlignment="CENTER" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="187.0" AnchorPane.rightAnchor="143.0" />

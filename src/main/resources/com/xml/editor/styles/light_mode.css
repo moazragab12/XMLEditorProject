@@ -38,17 +38,16 @@
 /* Text Area Styles */
 .text-area {
     -fx-text-fill: #000000; /* Black text for readability */
-    -fx-border-color: #d1d1d1; /* Light gray border */
-    -fx-border-width: 1px; /* Thin border for subtle separation */
-    -fx-border-radius: 5px; /* Rounded corners */
+    -fx-border-color: #ffffff; /* Light gray border */
+    -fx-border-width: 0px; /* Thin border for subtle separation */
+    -fx-border-radius: 0px; /* Rounded corners */
     -fx-background-color: #ffffff; /* White background */
-
-    -fx-focus-color: #a9b3b9; /* Light gray color when focused */
-    -fx-faint-focus-color: #e0e5e8; /* Subtle outer focus color */
+    -fx-focus-color: #ffffff; /* Light gray color when focused */
+    -fx-faint-focus-color: #ffffff; /* Subtle outer focus color */
 }
 
 .text-area:focused {
-    -fx-border-color: #007bff; /* Blue border when focused */
+    -fx-border-color: #ffffff; /* Blue border when focused */
 }
 
 /* Scrollbar Styles */

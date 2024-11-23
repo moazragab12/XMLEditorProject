@@ -10,6 +10,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -33,6 +34,10 @@ public class mainApplication implements Initializable {
     public TextArea inputArea;
     public Button btn_change_mode;
     public ScrollPane spvb;
+    public VBox lineNumbers1;
+    public VBox lineNumbers11;
+    public ScrollPane spo;
+    public ScrollPane spi;
 
 
     boolean isLightMode = false;
@@ -247,9 +252,31 @@ public class mainApplication implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         outputArea.setEditable(false);
         spvb.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Horizontal scrollbar
-        spvb.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Vertical scrollbar
+        spvb.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Vertical scrollbar\
+        spo.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Horizontal scrollbar
+        spo.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Vertical scrollbar
+        spi.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Horizontal scrollbar
+        spi.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Vertical scrollbar
 
+        inputArea.textProperty().addListener((observable, oldValue, newValue) -> updateLineNumbers(inputArea, lineNumbers1));
+        inputArea.scrollTopProperty().addListener((observable, oldValue, newValue) -> lineNumbers1.setLayoutY(-newValue.doubleValue()));
+        updateLineNumbers(inputArea, lineNumbers1);
+        outputArea.textProperty().addListener((observable, oldValue, newValue) -> updateLineNumbers(outputArea, lineNumbers11));
+        outputArea.scrollTopProperty().addListener((observable, oldValue, newValue) -> lineNumbers11.setLayoutY(-newValue.doubleValue()));
+        updateLineNumbers(outputArea, lineNumbers11);
+    }
+    private void updateLineNumbers(TextArea textArea, VBox lineNumbers) {
+        // Clear current line numbers
+        lineNumbers.getChildren().clear();
 
+        // Count the lines in the TextArea
+        int lineCount = textArea.getText().split("\n", -1).length;
+
+        // Add line numbers
+        for (int i = 1; i <= lineCount; i++) {
+            Text lineNumber = new Text(String.valueOf(i));
+            lineNumbers.getChildren().add(lineNumber);
+        }
     }
 
     public void search_but(ActionEvent actionEvent) {
