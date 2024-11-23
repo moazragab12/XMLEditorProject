@@ -17,7 +17,7 @@
    <children>
       <ScrollPane fx:id="spvb" layoutY="68.0" prefHeight="488.0" prefWidth="118.0" styleClass="title-bar" AnchorPane.bottomAnchor="184.79999999999995" AnchorPane.topAnchor="68.0">
          <content>
-            <VBox prefHeight="491.0" prefWidth="75.0" styleClass="title-bar">
+            <VBox prefHeight="1000000.0" prefWidth="75.0" styleClass="title-bar">
                <children>
                   <Button fx:id="but_play" alignment="CENTER" mnemonicParsing="false" onAction="#validateFile" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
                      <graphic>
@@ -259,7 +259,7 @@
                <children>
                   <ScrollPane fx:id="spi" prefHeight="400.0" prefWidth="40.0" styleClass="text-area">
                      <content>
-                        <VBox fx:id="lineNumbers1" prefHeight="500.0" prefWidth="50.0" styleClass="text-area">
+                        <VBox fx:id="lineNumbers1" prefHeight="1.0E7" prefWidth="50.0" styleClass="text-area">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
@@ -273,7 +273,7 @@
                <children>
                   <ScrollPane fx:id="spo" prefHeight="482.0" prefWidth="40.0" styleClass="text-area">
                      <content>
-                        <VBox fx:id="lineNumbers11" prefHeight="500.0" prefWidth="40.0" styleClass="text-area">
+                        <VBox fx:id="lineNumbers11" prefHeight="1.0E7" prefWidth="40.0" styleClass="text-area">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
