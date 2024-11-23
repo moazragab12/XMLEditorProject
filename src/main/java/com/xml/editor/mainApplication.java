@@ -3,8 +3,10 @@ package com.xml.editor;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -29,12 +31,17 @@ public class mainApplication implements Initializable {
     public TextArea outputArea;
     public TextFlow feedbackFlow;
     public TextArea inputArea;
+    public Button btn_change_mode;
+    public ScrollPane spvb;
 
 
-     boolean isLightMode = false;
+    boolean isLightMode = false;
      FileChooser fileChooser = new FileChooser();
      File selectedFile;
      int fontSize = 12;
+
+
+
 
     // Helper Method: Updates feedback in the feedbackFlow
     private void updateFeedback(String message) {
@@ -137,8 +144,9 @@ public class mainApplication implements Initializable {
     public void validateFile(ActionEvent actionEvent) {
         if (!isInputEmpty()) {
             String[] inputLines = inputArea.getText().split("\n");
-            boolean isValid = Functions.check(inputLines);
-            if (isValid) {
+            String[] errors = Functions.check(inputLines);
+            outputArea.setText(String.join("\n", errors));
+            if (errors[0]==null) {
                 updateFeedback("File is valid");
             } else {
                 updateFeedback("File is not valid. Please repair it.");
@@ -238,6 +246,8 @@ public class mainApplication implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         outputArea.setEditable(false);
+        spvb.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Horizontal scrollbar
+        spvb.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Vertical scrollbar
     }
 
     public void search_but(ActionEvent actionEvent) {

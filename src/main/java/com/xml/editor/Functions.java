@@ -1,8 +1,8 @@
 package com.xml.editor;
 
 public interface Functions {
-    static  boolean check(String[] s){
-        return false;
+    static  String[] check(String[] s){
+        return s;
     }
 
     static  String[] repair(String[] s){

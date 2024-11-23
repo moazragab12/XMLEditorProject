@@ -76,4 +76,26 @@
 .fade-in {
     animation: fadeIn 0.5s ease-in-out;
 }
+.button:hover {
+    cursor: pointer; /* Hand cursor on hover */
+    -fx-background-color: #64b5f6; /* Light blue background when hovered */
+    -fx-effect: innershadow(gaussian, #bbe0d8, 10, 0.5, 0, 0, 10, 10); /* Optional: inner shadow effect for highlight */
+}
 
+/* Button pressed effect: gives a darker background when pressed */
+.button:pressed {
+    -fx-background-color: #1e88e5;  /* Darker blue when pressed */
+    -fx-effect: innershadow(gaussian, #000000, 10, 0.8, 0, 0, 12, 12); /* Stronger inner shadow on press */
+}
+
+/* Optional: Base styling for the buttons */
+.button {
+    -fx-background-color: #1976d2; /* Default button color */
+    -fx-padding: 10px 20px;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-transition: background-color 0.3s ease-in-out; /* Smooth transition */
+}

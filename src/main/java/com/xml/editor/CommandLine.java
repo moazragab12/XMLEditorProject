@@ -46,7 +46,8 @@ public class CommandLine {
                         // Save the repaired file (mock action)
                         System.out.println("Repaired XML written to: " + outputFile);
                     } else {
-                        boolean isValid = Functions.check(new String[] { inputFile });
+                        String[] errors = Functions.check(new String[] { inputFile });
+                        boolean isValid=errors[0]==null;
                         System.out.println(isValid ? "XML is valid." : "XML is invalid.");
                     }
                     break;
