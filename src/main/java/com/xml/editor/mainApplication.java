@@ -248,6 +248,8 @@ public class mainApplication implements Initializable {
         outputArea.setEditable(false);
         spvb.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Horizontal scrollbar
         spvb.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Vertical scrollbar
+
+
     }
 
     public void search_but(ActionEvent actionEvent) {

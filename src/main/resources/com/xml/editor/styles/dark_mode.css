@@ -53,6 +53,9 @@
 .scroll-bar:vertical {
     -fx-opacity: 0; /* Keeps the scrollbar hidden, but can be shown on hover if needed */
 }
+.scroll-bar:horizontal {
+    -fx-opacity: 0; /* Keeps the scrollbar hidden, but can be shown on hover if needed */
+}
 
 /* Optional Hover effect on the primary panel */
 .primary:hover {

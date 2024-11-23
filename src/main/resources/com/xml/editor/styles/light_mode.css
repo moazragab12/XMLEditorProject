@@ -57,9 +57,10 @@
     -fx-background-color: #f8f9fa; /* Light background for the scrollbar */
     -fx-base: #dcdfe1; /* Subtle color for scrollbar base */
 }
-
-.scroll-bar:vertical:hover {
-    -fx-opacity: 1; /* Make scrollbar fully visible on hover */
+.scroll-bar:horizontal {
+    -fx-opacity: 0; /* Slightly visible scrollbar */
+    -fx-background-color: #f8f9fa; /* Light background for the scrollbar */
+    -fx-base: #dcdfe1; /* Subtle color for scrollbar base */
 }
 
 /* Optional Hover Effect on the primary panel */
