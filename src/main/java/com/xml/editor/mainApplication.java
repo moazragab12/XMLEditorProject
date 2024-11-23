@@ -225,6 +225,8 @@ public class mainApplication implements Initializable {
         fontSize++;
         inputArea.setFont(Font.font(fontSize));
         outputArea.setFont(Font.font(fontSize));
+        updateLineNumbers(inputArea,lineNumbers1);
+        updateLineNumbers(outputArea,lineNumbers11);
     }
 
     // Zoom Out
@@ -232,6 +234,8 @@ public class mainApplication implements Initializable {
         fontSize--;
         inputArea.setFont(Font.font(fontSize));
         outputArea.setFont(Font.font(fontSize));
+        updateLineNumbers(inputArea,lineNumbers1);
+        updateLineNumbers(outputArea,lineNumbers11);
     }
 
     private void setupFileChooser() {
@@ -269,6 +273,7 @@ public class mainApplication implements Initializable {
         // Add line numbers
         for (int i = 1; i <= lineCount; i++) {
             Text lineNumber = new Text(String.valueOf(i));
+            lineNumber.setFont(textArea.getFont());
             lineNumbers.getChildren().add(lineNumber);
         }
     }

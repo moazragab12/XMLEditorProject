@@ -27,10 +27,8 @@ public class Start extends Application {
         mainStage.setScene(mainScene);
         mainStage.setTitle(" XML Editor");
         mainStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/photoes/logo1.png.jpg")).toExternalForm()));
-        mainStage.setResizable(true);
+        mainStage.setResizable(false);
         mainStage.centerOnScreen();
-        mainStage.setMinWidth(1300); // Minimum width for the scene
-        mainStage.setMinHeight(770); // Minimum height for the scene
     }
 
     public static void main(String[] args) {
