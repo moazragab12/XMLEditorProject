@@ -4,7 +4,6 @@ public interface Functions {
     static  String[] check(String[] s){
         return s;
     }
-
     static  String[] repair(String[] s){
         return s;
     }

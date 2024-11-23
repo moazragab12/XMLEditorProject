@@ -31,9 +31,11 @@ public class Start extends Application {
 //            return;
 //        }
 
-        CommandLine cli = new CommandLine(args);
-        cli.execute();
-        // END OF CLI PART
-        launch();
+//        CommandLine cli = new CommandLine(args);
+//        cli.execute();
+//        // END OF CLI PART
+        commandLineV2.processCommand(args);
+       launch();
+
     }
 }
