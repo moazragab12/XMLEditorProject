@@ -1,22 +1,21 @@
 package com.xml.editor;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
-
+import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -38,14 +37,10 @@ public class mainApplication implements Initializable {
     public VBox lineNumbers11;
     public ScrollPane spo;
     public ScrollPane spi;
-
-
     boolean isLightMode = false;
      FileChooser fileChooser = new FileChooser();
      File selectedFile;
      int fontSize = 12;
-
-
 
 
     // Helper Method: Updates feedback in the feedbackFlow
@@ -257,7 +252,6 @@ public class mainApplication implements Initializable {
         spo.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Vertical scrollbar
         spi.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Horizontal scrollbar
         spi.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Vertical scrollbar
-
         inputArea.textProperty().addListener((observable, oldValue, newValue) -> updateLineNumbers(inputArea, lineNumbers1));
         inputArea.scrollTopProperty().addListener((observable, oldValue, newValue) -> lineNumbers1.setLayoutY(-newValue.doubleValue()));
         updateLineNumbers(inputArea, lineNumbers1);
@@ -293,4 +287,5 @@ public class mainApplication implements Initializable {
 
     public void network_but(ActionEvent actionEvent) {
     }
+
 }

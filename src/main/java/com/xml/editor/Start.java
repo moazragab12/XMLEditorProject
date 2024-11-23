@@ -12,16 +12,25 @@ import java.util.Objects;
 public class Start extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Start.class.getResource("mainApplication.fxml"));
-        Scene startScene = new Scene(fxmlLoader.load(), 1280, 720);
+        FXMLLoader fxmlLoader = new FXMLLoader(Start.class.getResource("Menu.fxml"));
+        Scene startScene = new Scene(fxmlLoader.load(), 800, 450);
         stage.setScene(startScene);
         stage.show();
         stage.setTitle(" XML Editor");
         stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/photoes/logo1.png.jpg")).toExternalForm()));
-        stage.setResizable(true);
+        stage.setResizable(false);
         stage.centerOnScreen();
-        stage.setMinWidth(1300); // Minimum width for the scene
-        stage.setMinHeight(770); // Minimum height for the scene
+
+        FXMLLoader fxmlLoader2 = new FXMLLoader(Start.class.getResource("mainApplication.fxml"));
+        Scene mainScene = new Scene(fxmlLoader2.load(), 1280, 720);
+        Stage mainStage = new Stage();
+        mainStage.setScene(mainScene);
+        mainStage.setTitle(" XML Editor");
+        mainStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/photoes/logo1.png.jpg")).toExternalForm()));
+        mainStage.setResizable(true);
+        mainStage.centerOnScreen();
+        mainStage.setMinWidth(1300); // Minimum width for the scene
+        mainStage.setMinHeight(770); // Minimum height for the scene
     }
 
     public static void main(String[] args) {
