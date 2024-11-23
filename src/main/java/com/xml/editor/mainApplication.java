@@ -37,6 +37,8 @@ public class mainApplication implements Initializable {
     public VBox lineNumbers11;
     public ScrollPane spo;
     public ScrollPane spi;
+    public ScrollPane spto;
+    public ScrollPane spti;
     boolean isLightMode = false;
      FileChooser fileChooser = new FileChooser();
      File selectedFile;
@@ -262,6 +264,17 @@ public class mainApplication implements Initializable {
         outputArea.textProperty().addListener((observable, oldValue, newValue) -> updateLineNumbers(outputArea, lineNumbers11));
         outputArea.scrollTopProperty().addListener((observable, oldValue, newValue) -> lineNumbers11.setLayoutY(-newValue.doubleValue()));
         updateLineNumbers(outputArea, lineNumbers11);
+        // Synchronize the vertical scroll values
+        spti.vvalueProperty().bindBidirectional(spi.vvalueProperty());
+
+        // (Optional) Synchronize horizontal scroll values
+        spti.hvalueProperty().bindBidirectional(spi.hvalueProperty());
+        // Synchronize the vertical scroll values
+        spto.vvalueProperty().bindBidirectional(spo.vvalueProperty());
+
+        // (Optional) Synchronize horizontal scroll values
+        spto.hvalueProperty().bindBidirectional(spo.hvalueProperty());
+
     }
     private void updateLineNumbers(TextArea textArea, VBox lineNumbers) {
         // Clear current line numbers

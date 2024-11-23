@@ -259,28 +259,36 @@
                <children>
                   <ScrollPane fx:id="spi" prefWidth="40.0" styleClass="text-area">
                      <content>
-                        <VBox fx:id="lineNumbers1" prefHeight="400.0" prefWidth="50.0" styleClass="text-area">
+                        <VBox fx:id="lineNumbers1" prefHeight="420.0" prefWidth="50.0" styleClass="text-area">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                         </VBox>
                      </content>
                   </ScrollPane>
-                  <TextArea fx:id="inputArea" prefHeight="400.0" prefWidth="510.0" promptText="Write code here" styleClass="text-area" />
+                  <ScrollPane fx:id="spti" styleClass="text-area">
+                     <content>
+                        <TextArea fx:id="inputArea" prefHeight="420.0" prefWidth="510.0" promptText="Write code here" styleClass="text-area" />
+                     </content>
+                  </ScrollPane>
                </children>
             </HBox>
             <HBox>
                <children>
                   <ScrollPane fx:id="spo" prefWidth="40.0" styleClass="text-area">
                      <content>
-                        <VBox fx:id="lineNumbers11" prefHeight="400.0" prefWidth="40.0" styleClass="text-area">
+                        <VBox fx:id="lineNumbers11" prefHeight="420.0" prefWidth="40.0" styleClass="text-area">
                            <padding>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </padding>
                         </VBox>
                      </content>
                   </ScrollPane>
-                  <TextArea fx:id="outputArea" prefHeight="400.0" prefWidth="510.0" promptText="Output here" />
+                  <ScrollPane fx:id="spto" styleClass="text-area">
+                     <content>
+                        <TextArea fx:id="outputArea" prefHeight="420.0" prefWidth="510.0" promptText="Output here" />
+                     </content>
+                  </ScrollPane>
                </children>
             </HBox>
          </children>
