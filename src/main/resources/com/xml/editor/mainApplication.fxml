@@ -268,7 +268,10 @@
                   </ScrollPane>
                   <ScrollPane fx:id="spti" styleClass="text-area">
                      <content>
-                        <TextArea fx:id="inputArea" prefHeight="420.0" prefWidth="510.0" promptText="Write code here" styleClass="text-area" />
+                        <TextArea fx:id="inputArea" prefHeight="420.0" prefWidth="510.0" promptText="Write code here" styleClass="text-area">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding></TextArea>
                      </content>
                   </ScrollPane>
                </children>
@@ -286,7 +289,10 @@
                   </ScrollPane>
                   <ScrollPane fx:id="spto" styleClass="text-area">
                      <content>
-                        <TextArea fx:id="outputArea" prefHeight="420.0" prefWidth="510.0" promptText="Output here" />
+                        <TextArea fx:id="outputArea" prefHeight="420.0" prefWidth="510.0" promptText="Output here">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding></TextArea>
                      </content>
                   </ScrollPane>
                </children>

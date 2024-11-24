@@ -266,14 +266,9 @@ public class mainApplication implements Initializable {
         updateLineNumbers(outputArea, lineNumbers11);
         // Synchronize the vertical scroll values
         spti.vvalueProperty().bindBidirectional(spi.vvalueProperty());
-
-        // (Optional) Synchronize horizontal scroll values
-        spti.hvalueProperty().bindBidirectional(spi.hvalueProperty());
         // Synchronize the vertical scroll values
         spto.vvalueProperty().bindBidirectional(spo.vvalueProperty());
 
-        // (Optional) Synchronize horizontal scroll values
-        spto.hvalueProperty().bindBidirectional(spo.hvalueProperty());
 
     }
     private void updateLineNumbers(TextArea textArea, VBox lineNumbers) {
@@ -287,6 +282,7 @@ public class mainApplication implements Initializable {
         for (int i = 1; i <= lineCount; i++) {
             Text lineNumber = new Text(String.valueOf(i));
             lineNumber.setFont(textArea.getFont());
+
             lineNumbers.getChildren().add(lineNumber);
         }
     }
