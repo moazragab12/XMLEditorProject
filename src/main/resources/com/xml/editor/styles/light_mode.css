@@ -1,11 +1,11 @@
 /* General Styles */
 .title-bar {
-    -fx-background-color: #bebebe;
+    -fx-background-color: #EADCFE;
     -fx-padding: 10px; /* Adds space around the title bar */
 }
 
 .primary {
-    -fx-background-color: #ffffff;
+    -fx-background-color: #D0C4E2;
     -fx-padding: 15px; /* Adds padding around the primary content */
 }
 
@@ -38,16 +38,17 @@
 /* Text Area Styles */
 .text-area {
     -fx-text-fill: #000000; /* Black text for readability */
-    -fx-border-color: #ffffff; /* Light gray border */
+    -fx-background-color: #D0C4E2;
+    -fx-border-color: #D0C4E2; /* Light gray border */
     -fx-border-width: 0px; /* Thin border for subtle separation */
     -fx-border-radius: 0px; /* Rounded corners */
-    -fx-background-color: #ffffff; /* White background */
-    -fx-focus-color: #ffffff; /* Light gray color when focused */
-    -fx-faint-focus-color: #ffffff; /* Subtle outer focus color */
+    -fx-focus-color: #D0C4E2; /* Light gray color when focused */
+    -fx-faint-focus-color: #D0C4E2; /* Subtle outer focus color */
+    -fx-control-inner-background: #D0C4E2;
 }
 
 .text-area:focused {
-    -fx-border-color: #ffffff; /* Blue border when focused */
+    -fx-border-color: #D0C4E2; /* Blue border when focused */
 }
 
 /* Scrollbar Styles */
@@ -79,13 +80,13 @@
 .button:hover {
     cursor: pointer; /* Hand cursor on hover */
     -fx-background-color: #64b5f6; /* Light blue background when hovered */
-    -fx-effect: innershadow(gaussian, #bbe0d8, 10, 0.5, 0, 0, 10, 10); /* Optional: inner shadow effect for highlight */
+    -fx-effect: innershadow(gaussian, #ac72ff, 10, 0.5, 0, 0, 10, 10); /* Optional: inner shadow effect for highlight */
 }
 
 /* Button pressed effect: gives a darker background when pressed */
 .button:pressed {
     -fx-background-color: #1e88e5;  /* Darker blue when pressed */
-    -fx-effect: innershadow(gaussian, #000000, 10, 0.8, 0, 0, 12, 12); /* Stronger inner shadow on press */
+    -fx-effect: innershadow(gaussian, #ac72ff, 10, 0.8, 0, 0, 12, 12); /* Stronger inner shadow on press */
 }
 
 /* Optional: Base styling for the buttons */

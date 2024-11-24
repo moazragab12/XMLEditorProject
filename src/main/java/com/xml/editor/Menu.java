@@ -14,14 +14,15 @@ public class Menu {
     public Button newFileMenu;
     public void newFileMenu(ActionEvent actionEvent) throws IOException {
         Stage mainStage = (Stage) newFileMenu.getScene().getWindow();
-        FXMLLoader fxmlLoader2 = new FXMLLoader(Start.class.getResource("mainApplication.fxml"));
-        Scene mainScene = new Scene(fxmlLoader2.load(), 1280, 720);
-
-        mainStage.setScene(mainScene);
-        mainStage.setTitle(" XML Editor");
-        mainStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/photoes/logo1.png.jpg")).toExternalForm()));
-        mainStage.setResizable(false);
-        mainStage.centerOnScreen();
-
+        mainStage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(Start.class.getResource("mainApplication.fxml"));
+        Scene startScene = new Scene(fxmlLoader.load(), 1280, 720);
+        Stage stage = new Stage();
+        stage.setScene(startScene);
+        stage.show();
+        stage.setTitle(" XML Editor");
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/photos/logo3.png")).toExternalForm()));
+        stage.setResizable(false);
+        stage.centerOnScreen();
     }
 }

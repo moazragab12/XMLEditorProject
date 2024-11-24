@@ -17,18 +17,9 @@ public class Start extends Application {
         stage.setScene(startScene);
         stage.show();
         stage.setTitle(" XML Editor");
-        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/photoes/logo1.png.jpg")).toExternalForm()));
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/photos/logo3.png")).toExternalForm()));
         stage.setResizable(false);
         stage.centerOnScreen();
-
-        FXMLLoader fxmlLoader2 = new FXMLLoader(Start.class.getResource("mainApplication.fxml"));
-        Scene mainScene = new Scene(fxmlLoader2.load(), 1280, 720);
-        Stage mainStage = new Stage();
-        mainStage.setScene(mainScene);
-        mainStage.setTitle(" XML Editor");
-        mainStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/photoes/logo1.png.jpg")).toExternalForm()));
-        mainStage.setResizable(false);
-        mainStage.centerOnScreen();
     }
 
     public static void main(String[] args) {

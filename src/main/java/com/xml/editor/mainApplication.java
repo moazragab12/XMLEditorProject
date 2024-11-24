@@ -1,7 +1,6 @@
 package com.xml.editor;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -15,7 +14,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -39,6 +38,7 @@ public class mainApplication implements Initializable {
     public ScrollPane spi;
     public ScrollPane spto;
     public ScrollPane spti;
+    public ImageView xmll;
     boolean isLightMode = false;
      FileChooser fileChooser = new FileChooser();
      File selectedFile;
@@ -71,13 +71,15 @@ public class mainApplication implements Initializable {
             scene.getRoot().getStylesheets()
                     .add(getClass().getResource("/com/xml/editor/styles/dark_mode.css").toExternalForm());
             themeToggleImage.setImage(
-                    new Image(String.valueOf(getClass().getResource("/photoes/light_mode_icon.png"))));
+                    new Image(String.valueOf(getClass().getResource("/photos/light_mode_icon.png"))));
+            xmll.setImage(new Image(String.valueOf(getClass().getResource("/photos/logo2.png"))));
         } else {
             scene.getRoot().getStylesheets().clear();
             scene.getRoot().getStylesheets()
                     .add(getClass().getResource("/com/xml/editor/styles/light_mode.css").toExternalForm());
             themeToggleImage.setImage(
-                    new Image(String.valueOf(getClass().getResource("/photoes/dark_mode_icon.png"))));
+                    new Image(String.valueOf(getClass().getResource("/photos/dark_mode_icon.png"))));
+            xmll.setImage(new Image(String.valueOf(getClass().getResource("/photos/logo1.png.jpg"))));
         }
         isLightMode = !isLightMode;
     }
@@ -282,7 +284,7 @@ public class mainApplication implements Initializable {
         for (int i = 1; i <= lineCount; i++) {
             Text lineNumber = new Text(String.valueOf(i));
             lineNumber.setFont(textArea.getFont());
-
+            lineNumber.setFill(Color.valueOf("#ac72ff"));
             lineNumbers.getChildren().add(lineNumber);
         }
     }

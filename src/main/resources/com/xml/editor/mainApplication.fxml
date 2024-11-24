@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="title-bar" stylesheets="@styles/dark_mode.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xml.editor.mainApplication">
+<AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="title-bar" stylesheets="@styles/dark_mode.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.xml.editor.mainApplication">
    <children>
       <ScrollPane fx:id="spvb" layoutY="88.0" prefHeight="480.0" prefWidth="118.0" styleClass="title-bar" AnchorPane.bottomAnchor="162.0" AnchorPane.topAnchor="78.0">
          <content>
@@ -23,7 +23,7 @@
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../photoes/start_icon.png" />
+                              <Image url="@../../../photos/start_icon.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -35,7 +35,7 @@
                      <graphic>
                         <ImageView fx:id="image_change11" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../photoes/repair_icon.png" />
+                              <Image url="@../../../photos/repair_icon.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -47,7 +47,7 @@
                      <graphic>
                         <ImageView fx:id="image_change12" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../photoes/formatting-icon.jpg" />
+                              <Image url="@../../../photos/formatting-icon.jpg" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -59,7 +59,7 @@
                      <graphic>
                         <ImageView fx:id="image_change13" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../photoes/minify_icon.png" />
+                              <Image url="@../../../photos/minify_icon.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -71,7 +71,7 @@
                      <graphic>
                         <ImageView fx:id="image_change14" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../photoes/json_icon.png" />
+                              <Image url="@../../../photos/json_icon.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -83,7 +83,7 @@
                      <graphic>
                         <ImageView fx:id="image_change15" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../photoes/como_icon.png" />
+                              <Image url="@../../../photos/como_icon.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -95,7 +95,7 @@
                      <graphic>
                         <ImageView fx:id="image_change16" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../photoes/decompress_icon.png" />
+                              <Image url="@../../../photos/decompress_icon.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -107,7 +107,7 @@
                      <graphic>
                         <ImageView fx:id="image_change17" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../photoes/graph_icon.png" />
+                              <Image url="@../../../photos/graph_icon.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -119,7 +119,7 @@
                      <graphic>
                         <ImageView fx:id="image_change18" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../photoes/network_icon.png" />
+                              <Image url="@../../../photos/network_icon.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -139,9 +139,9 @@
       </ScrollPane>
       <HBox alignment="CENTER" layoutY="-12.0" prefHeight="82.0" prefWidth="1280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <ImageView fitHeight="82.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="82.0" fitWidth="79.0" pickOnBounds="true" preserveRatio="true" fx:id="xmll">
                <image>
-                  <Image url="@../../../photoes/logo2.png" />
+                  <Image url="@../../../photos/logo2.png" />
                </image>
             </ImageView>
             <HBox alignment="CENTER">
@@ -150,7 +150,7 @@
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../photoes/New_File_icon.png" />
+                              <Image url="@../../../photos/New_File_icon.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -162,7 +162,7 @@
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../photoes/icons-import.png" />
+                              <Image url="@../../../photos/icons-import.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -174,7 +174,7 @@
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../photoes/save_icon.png" />
+                              <Image url="@../../../photos/save_icon.png" />
                            </image>
                            <cursor>
                               <Cursor fx:constant="DEFAULT" />
@@ -189,7 +189,7 @@
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../photoes/save_as_icon.png" />
+                              <Image url="@../../../photos/save_as_icon.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -201,7 +201,7 @@
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../photoes/zoom_in_icon.png" />
+                              <Image url="@../../../photos/zoom_in_icon.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -213,7 +213,7 @@
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../photoes/zoom_out_icon.png" />
+                              <Image url="@../../../photos/zoom_out_icon.png" />
                            </image>
                            <cursor>
                               <Cursor fx:constant="DEFAULT" />
@@ -228,7 +228,7 @@
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../photoes/icons-search.png" />
+                              <Image url="@../../../photos/icons-search.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -243,7 +243,7 @@
                <graphic>
                   <ImageView fx:id="themeToggleImage" fitHeight="78.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../photoes/light_mode_icon.png" />
+                        <Image url="@../../../photos/light_mode_icon.png" />
                      </image>
                   </ImageView>
                </graphic>

@@ -1,11 +1,11 @@
 /* General Styles */
 .title-bar {
-    -fx-background-color: #303443;
+    -fx-background-color: #33333c;
     -fx-padding: 10px; /* Adds some space around the title bar */
 }
 
 .primary {
-    -fx-background-color: #202124;
+    -fx-background-color: #222228;
     -fx-padding: 10px; /* Adds space to the primary content */
 }
 
@@ -24,7 +24,7 @@
 }
 
 .btn-primary:pressed {
-    -fx-background-color: #1F2328; /* Darkens the background on press */
+    -fx-background-color: #1ac72ff; /* Darkens the background on press */
 }
 
 .txt-primary {
@@ -34,20 +34,19 @@
 }
 
 .text-area {
-    -fx-control-inner-background: #303134;
-    -fx-background-color: #303134;
+    -fx-control-inner-background: #222228;
+    -fx-background-color: #222228;
     -fx-text-fill: white;
-    -fx-border-color: #303134;
+    -fx-border-color: #222228;
     -fx-border-width: 0px;
     -fx-border-radius: 0px; /* Adds rounded corners for better visuals */
     -fx-background-radius: 0px; /* Rounded corners */
-    -fx-focus-color: #303134; /* Lighter border color on focus */
-    -fx-faint-focus-color: #303134;
-
+    -fx-focus-color: #222228; /* Lighter border color on focus */
+    -fx-faint-focus-color: #222228;
 }
 
 .text-area:focused {
-    -fx-border-color: #303134; /* Focused border color */
+    -fx-border-color: #222228; /* Focused border color */
 }
 
 .scroll-bar:vertical {
@@ -75,13 +74,13 @@
 .button:hover {
     cursor: pointer; /* Hand cursor on hover */
     -fx-background-color: #64b5f6; /* Light blue background when hovered */
-    -fx-effect: innershadow(gaussian, #bbe0d8, 10, 0.5, 0, 0, 10, 10); /* Optional: inner shadow effect for highlight */
+    -fx-effect: innershadow(gaussian, #ac72ff, 10, 0.5, 0, 0, 10, 10); /* Optional: inner shadow effect for highlight */
 }
 
 /* Button pressed effect: gives a darker background when pressed */
 .button:pressed {
     -fx-background-color: #1e88e5;  /* Darker blue when pressed */
-    -fx-effect: innershadow(gaussian, #000000, 10, 0.8, 0, 0, 12, 12); /* Stronger inner shadow on press */
+    -fx-effect: innershadow(gaussian, #ac72ff, 10, 0.8, 0, 0, 12, 12); /* Stronger inner shadow on press */
 }
 
 /* Optional: Base styling for the buttons */
