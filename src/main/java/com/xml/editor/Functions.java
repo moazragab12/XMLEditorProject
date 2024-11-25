@@ -1,6 +1,10 @@
 package com.xml.editor;
 
 import javafx.scene.image.ImageView;
+import org.json.JSONObject;
+import org.json.XML;
+
+import java.util.Arrays;
 
 public interface Functions {
     static  String[] check(String[] s){
@@ -12,8 +16,18 @@ public interface Functions {
     static  String[] format(String[] s){
         return s;
     }
-    static  String[] xmltoJson(String[] s){
-        return s;
+    static  String[] xmltoJson(String[] inputxml){
+        // Join the array into a single XML string
+        String xmlString = String.join("", inputxml);
+
+        // Convert XML to JSONObject
+        JSONObject json = XML.toJSONObject(xmlString);
+
+        // Convert JSONObject to a formatted string (with 5 spaces for indentation)
+        String jsonString = json.toString(5);
+
+        // Split the JSON string by newlines and return it as an array of strings
+        return jsonString.split("\n");
     }
     static  String[] minify(String[] s){
         String temp=String.join("",s);
