@@ -2,7 +2,7 @@ import java.util.ArrayList;
 public class User {
     String ID;
     String name;
-    ArrayList<String> followers = new ArrayList<String>();
+    ArrayList<String> followers = new ArrayList<>();
     ArrayList<String> posts = new ArrayList<String>();
 
     public void print(){
