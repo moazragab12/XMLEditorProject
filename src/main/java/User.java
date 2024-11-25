@@ -3,7 +3,7 @@ public class User {
     String ID;
     String name;
     ArrayList<String> followers = new ArrayList<>();
-    ArrayList<String> posts = new ArrayList<String>();
+    ArrayList<String> posts = new ArrayList<>();
 
     public void print(){
         System.out.println("User ID is: " + ID);
