@@ -88,7 +88,7 @@ public class mainApplication implements Initializable {
     public void decompressFile(ActionEvent actionEvent) {
         if (!isInputEmpty()) {
             String[] inputLines = inputArea.getText().split("\n");
-            String[] output = Functions.decomp(inputLines);
+            String[] output = Functions.decompress(inputLines);
             outputArea.setText(String.join("\n", output));
             updateFeedback("File decompressed");
         }
@@ -98,7 +98,7 @@ public class mainApplication implements Initializable {
     public void compressFile(ActionEvent actionEvent) {
         if (!isInputEmpty()) {
             String[] inputLines = inputArea.getText().split("\n");
-            String[] output = Functions.comp(inputLines);
+            String[] output = Functions.compress(inputLines);
             outputArea.setText(String.join("\n", output));
             updateFeedback("File compressed");
         }
@@ -247,8 +247,10 @@ public class mainApplication implements Initializable {
         fileChooser.getExtensionFilters().clear();
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("XML Files", "*.xml"),
-                new FileChooser.ExtensionFilter("Text Files", "*.txt")
-        );
+                new FileChooser.ExtensionFilter("Text Files", "*.txt"),
+                new FileChooser.ExtensionFilter("Compressed Files", "*.comp")
+
+                );
     }
 
     @Override

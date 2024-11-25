@@ -38,12 +38,12 @@ public  class  commandLineV2 {
     }
     public static void initFunctions() {
         commands = new HashMap<>();
-        commands.put("compress", Functions::comp);
+        commands.put("compress", Functions::compress);
         commands.put("verify", Functions::check);
         commands.put("format", Functions::format);
         commands.put("json", Functions::xmltoJson);
         commands.put("mini", Functions::minify);
-        commands.put("decompress", Functions::decomp);
+        commands.put("decompress", Functions::decompress);
     }
     public static void process(String command) {
         String commandName = command.split(" ")[1];

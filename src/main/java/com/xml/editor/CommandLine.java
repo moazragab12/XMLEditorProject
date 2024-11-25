@@ -81,7 +81,7 @@ public class CommandLine {
 
                 case "compress":
                     if (inputFile != null && outputFile != null) {
-                        String[] compressed = Functions.comp(new String[] { inputFile });
+                        String[] compressed = Functions.compress(new String[] { inputFile });
                         System.out.println("Compressed XML written to: " + outputFile);
                     } else {
                         System.out.println("Error: Input and output files are required for compression.");
@@ -90,7 +90,7 @@ public class CommandLine {
 
                 case "decompress":
                     if (inputFile != null && outputFile != null) {
-                        String[] decompressed = Functions.decomp(new String[] { inputFile });
+                        String[] decompressed = Functions.decompress(new String[] { inputFile });
                         System.out.println("Decompressed XML written to: " + outputFile);
                     } else {
                         System.out.println("Error: Input and output files are required for decompression.");
