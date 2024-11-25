@@ -3,9 +3,12 @@ package com.xml.editor;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -27,12 +30,20 @@ public class mainApplication implements Initializable {
     public TextArea outputArea;
     public TextFlow feedbackFlow;
     public TextArea inputArea;
-
-
-     boolean isLightMode = false;
+    public Button btn_change_mode;
+    public ScrollPane spvb;
+    public VBox lineNumbers1;
+    public VBox lineNumbers11;
+    public ScrollPane spo;
+    public ScrollPane spi;
+    public ScrollPane spto;
+    public ScrollPane spti;
+    public ImageView xmll;
+    boolean isLightMode = false;
      FileChooser fileChooser = new FileChooser();
      File selectedFile;
      int fontSize = 12;
+
 
     // Helper Method: Updates feedback in the feedbackFlow
     private void updateFeedback(String message) {
@@ -60,13 +71,15 @@ public class mainApplication implements Initializable {
             scene.getRoot().getStylesheets()
                     .add(getClass().getResource("/com/xml/editor/styles/dark_mode.css").toExternalForm());
             themeToggleImage.setImage(
-                    new Image(String.valueOf(getClass().getResource("/photoes/light_mode_icon.png"))));
+                    new Image(String.valueOf(getClass().getResource("/photos/light_mode_icon.png"))));
+            xmll.setImage(new Image(String.valueOf(getClass().getResource("/photos/logo2.png"))));
         } else {
             scene.getRoot().getStylesheets().clear();
             scene.getRoot().getStylesheets()
                     .add(getClass().getResource("/com/xml/editor/styles/light_mode.css").toExternalForm());
             themeToggleImage.setImage(
-                    new Image(String.valueOf(getClass().getResource("/photoes/dark_mode_icon.png"))));
+                    new Image(String.valueOf(getClass().getResource("/photos/dark_mode_icon.png"))));
+            xmll.setImage(new Image(String.valueOf(getClass().getResource("/photos/logo1.png.jpg"))));
         }
         isLightMode = !isLightMode;
     }
@@ -75,7 +88,7 @@ public class mainApplication implements Initializable {
     public void decompressFile(ActionEvent actionEvent) {
         if (!isInputEmpty()) {
             String[] inputLines = inputArea.getText().split("\n");
-            String[] output = Functions.decompress(inputLines);
+            String[] output = Functions.decomp(inputLines);
             outputArea.setText(String.join("\n", output));
             updateFeedback("File decompressed");
         }
@@ -95,7 +108,7 @@ public class mainApplication implements Initializable {
     public void convertToJson(ActionEvent actionEvent) {
         if (!isInputEmpty()) {
             String[] inputLines = inputArea.getText().split("\n");
-            String[] output = Functions.xmlToJson(inputLines);
+            String[] output = Functions.xmltoJson(inputLines);
             outputArea.setText(String.join("\n", output));
             updateFeedback("File converted to JSON");
         }
@@ -135,8 +148,9 @@ public class mainApplication implements Initializable {
     public void validateFile(ActionEvent actionEvent) {
         if (!isInputEmpty()) {
             String[] inputLines = inputArea.getText().split("\n");
-            boolean isValid = Functions.check(inputLines);
-            if (isValid) {
+            String[] errors = Functions.check(inputLines);
+            outputArea.setText(String.join("\n", errors));
+            if (errors[0]==null) {
                 updateFeedback("File is valid");
             } else {
                 updateFeedback("File is not valid. Please repair it.");
@@ -155,9 +169,10 @@ public class mainApplication implements Initializable {
             outputArea.clear();
             try (Scanner scanner = new Scanner(selectedFile)) {
                 inputArea.clear();
+                String temp="";
                 while (scanner.hasNextLine()) {
-                    inputArea.appendText(scanner.nextLine() + "\n");
-                }
+                    temp=temp+scanner.nextLine() + "\n";
+                }inputArea.appendText(temp);
                 updateFeedback("File imported: " + selectedFile.getName());
             } catch (IOException e) {
                 updateFeedback("Error reading file: " + e.getMessage());
@@ -183,6 +198,7 @@ public class mainApplication implements Initializable {
 
     // Save As New File
     public void saveAsFile(ActionEvent actionEvent) {
+        setupFileChooser();
         if (!outputArea.getText().isEmpty()) {
             File saveFile = fileChooser.showSaveDialog(themeToggleImage.getScene().getWindow());
             if (saveFile != null) {
@@ -213,6 +229,8 @@ public class mainApplication implements Initializable {
         fontSize++;
         inputArea.setFont(Font.font(fontSize));
         outputArea.setFont(Font.font(fontSize));
+        updateLineNumbers(inputArea,lineNumbers1);
+        updateLineNumbers(outputArea,lineNumbers11);
     }
 
     // Zoom Out
@@ -220,10 +238,12 @@ public class mainApplication implements Initializable {
         fontSize--;
         inputArea.setFont(Font.font(fontSize));
         outputArea.setFont(Font.font(fontSize));
+        updateLineNumbers(inputArea,lineNumbers1);
+        updateLineNumbers(outputArea,lineNumbers11);
     }
 
     private void setupFileChooser() {
-       // fileChooser.setInitialDirectory(new File(System.getProperty("user.home") + "/Desktop"));
+      // fileChooser.setInitialDirectory(new File(System.getProperty("user.home") + "/Desktop"));
         fileChooser.getExtensionFilters().clear();
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("XML Files", "*.xml"),
@@ -234,6 +254,39 @@ public class mainApplication implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         outputArea.setEditable(false);
+        spvb.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Horizontal scrollbar
+        spvb.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Vertical scrollbar\
+        spo.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Horizontal scrollbar
+        spo.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Vertical scrollbar
+        spi.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Horizontal scrollbar
+        spi.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // Vertical scrollbar
+        inputArea.textProperty().addListener((observable, oldValue, newValue) -> updateLineNumbers(inputArea, lineNumbers1));
+        inputArea.scrollTopProperty().addListener((observable, oldValue, newValue) -> lineNumbers1.setLayoutY(-newValue.doubleValue()));
+        updateLineNumbers(inputArea, lineNumbers1);
+        outputArea.textProperty().addListener((observable, oldValue, newValue) -> updateLineNumbers(outputArea, lineNumbers11));
+        outputArea.scrollTopProperty().addListener((observable, oldValue, newValue) -> lineNumbers11.setLayoutY(-newValue.doubleValue()));
+        updateLineNumbers(outputArea, lineNumbers11);
+        // Synchronize the vertical scroll values
+        spti.vvalueProperty().bindBidirectional(spi.vvalueProperty());
+        // Synchronize the vertical scroll values
+        spto.vvalueProperty().bindBidirectional(spo.vvalueProperty());
+
+
+    }
+    private void updateLineNumbers(TextArea textArea, VBox lineNumbers) {
+        // Clear current line numbers
+        lineNumbers.getChildren().clear();
+
+        // Count the lines in the TextArea
+        int lineCount = textArea.getText().split("\n", -1).length;
+
+        // Add line numbers
+        for (int i = 1; i <= lineCount; i++) {
+            Text lineNumber = new Text(String.valueOf(i));
+            lineNumber.setFont(textArea.getFont());
+            lineNumber.setFill(Color.valueOf("#ac72ff"));
+            lineNumbers.getChildren().add(lineNumber);
+        }
     }
 
     public void search_but(ActionEvent actionEvent) {
@@ -250,4 +303,5 @@ public class mainApplication implements Initializable {
 
     public void network_but(ActionEvent actionEvent) {
     }
+
 }

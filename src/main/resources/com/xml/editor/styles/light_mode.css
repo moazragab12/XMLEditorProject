@@ -1,11 +1,11 @@
 /* General Styles */
 .title-bar {
-    -fx-background-color: #bebebe;
+    -fx-background-color: #EADCFE;
     -fx-padding: 10px; /* Adds space around the title bar */
 }
 
 .primary {
-    -fx-background-color: #ffffff;
+    -fx-background-color: #D0C4E2;
     -fx-padding: 15px; /* Adds padding around the primary content */
 }
 
@@ -38,17 +38,17 @@
 /* Text Area Styles */
 .text-area {
     -fx-text-fill: #000000; /* Black text for readability */
-    -fx-border-color: #d1d1d1; /* Light gray border */
-    -fx-border-width: 1px; /* Thin border for subtle separation */
-    -fx-border-radius: 5px; /* Rounded corners */
-    -fx-background-color: #ffffff; /* White background */
-
-    -fx-focus-color: #a9b3b9; /* Light gray color when focused */
-    -fx-faint-focus-color: #e0e5e8; /* Subtle outer focus color */
+    -fx-background-color: #D0C4E2;
+    -fx-border-color: #D0C4E2; /* Light gray border */
+    -fx-border-width: 0px; /* Thin border for subtle separation */
+    -fx-border-radius: 0px; /* Rounded corners */
+    -fx-focus-color: #D0C4E2; /* Light gray color when focused */
+    -fx-faint-focus-color: #D0C4E2; /* Subtle outer focus color */
+    -fx-control-inner-background: #D0C4E2;
 }
 
 .text-area:focused {
-    -fx-border-color: #007bff; /* Blue border when focused */
+    -fx-border-color: #D0C4E2; /* Blue border when focused */
 }
 
 /* Scrollbar Styles */
@@ -57,9 +57,10 @@
     -fx-background-color: #f8f9fa; /* Light background for the scrollbar */
     -fx-base: #dcdfe1; /* Subtle color for scrollbar base */
 }
-
-.scroll-bar:vertical:hover {
-    -fx-opacity: 1; /* Make scrollbar fully visible on hover */
+.scroll-bar:horizontal {
+    -fx-opacity: 0; /* Slightly visible scrollbar */
+    -fx-background-color: #f8f9fa; /* Light background for the scrollbar */
+    -fx-base: #dcdfe1; /* Subtle color for scrollbar base */
 }
 
 /* Optional Hover Effect on the primary panel */
@@ -75,4 +76,27 @@
 
 .fade-in {
     animation: fadeIn 0.5s ease-in-out;
+}
+.button:hover {
+    cursor: pointer; /* Hand cursor on hover */
+    -fx-background-color: #64b5f6; /* Light blue background when hovered */
+    -fx-effect: innershadow(gaussian, #ac72ff, 10, 0.5, 0, 0, 10, 10); /* Optional: inner shadow effect for highlight */
+}
+
+/* Button pressed effect: gives a darker background when pressed */
+.button:pressed {
+    -fx-background-color: #1e88e5;  /* Darker blue when pressed */
+    -fx-effect: innershadow(gaussian, #ac72ff, 10, 0.8, 0, 0, 12, 12); /* Stronger inner shadow on press */
+}
+
+/* Optional: Base styling for the buttons */
+.button {
+    -fx-background-color: #1976d2; /* Default button color */
+    -fx-padding: 10px 20px;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-transition: background-color 0.3s ease-in-out; /* Smooth transition */
 }
