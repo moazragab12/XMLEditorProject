@@ -16,12 +16,14 @@ public class XmlHandler
         writeLines(outputFilePath, format(fixedLines));
     }
 
-    static public List<String> checkError(List<String> lines) {
+    static public List<String> checkError(List<String> lines)
+    {
         List<String> annotatedLines = new ArrayList<>();
         TagContext openTags = new TagContext();
         int lineNumber = 0;
 
-        for (String line : lines) {
+        for (String line : lines)
+        {
             lineNumber++;
             String trimmedLine = line.trim();
             if (trimmedLine.isEmpty())
@@ -33,43 +35,61 @@ public class XmlHandler
             String errorMsg = "";
             String padding = "\t";
 
-            for (String token : tokens) {
+            for (String token : tokens)
+            {
                 annotatedLine.append(token);
-                if (isOpenTag(token)) {
-                    if (openTags.isRepeatedTag(token)) {
+                if (isOpenTag(token))
+                {
+                    if (openTags.isRepeatedTag(token))
+                    {
                         bodyEnclosed = true;
                         errorMsg = String.format("Line %d: Expected closing tag for '%s', but found another opening tag '%s'.", lineNumber, openTags.popTag(), token);
-                    } else {
+                    }
+                    else
+                    {
                         openTags.pushTag(token);
                     }
-                } else if (isCloseTag(token)) {
-                    if (openTags.topTagMatches(token)) {
+                }
+                else if (isCloseTag(token))
+                {
+                    if (openTags.topTagMatches(token))
+                    {
                         bodyEnclosed = true;
                         openTags.popTag();
-                    } else {
+                    }
+                    else
+                    {
                         // Check for mismatched closing tag
                         errorMsg = String.format("Line %d: Mismatched closing tag. Expected closing for '%s', but found '%s'.", lineNumber, openTags.peekTag(), token);
 
                         // Handling unexpected tags or removing wrongly matched tags
-                        if (openTags.isEmpty()) {
+                        if (openTags.isEmpty())
+                        {
                             errorMsg = String.format("Line %d: Unexpected closing tag '%s' found, but no opening tag is available.", lineNumber, token);
-                        } else if (!openTags.contain(generateOpeningTag(token))) {
+                        }
+                        else if (!openTags.contain(generateOpeningTag(token)))
+                        {
                             openTags.popTag();  // Try to pop any unmatched tags to allow further parsing
                             errorMsg = String.format("Line %d: Unexpected closing tag '%s'. No matching opening tag.", lineNumber, token);
                         }
                     }
-                } else {
+                }
+                else
+                {
                     // It's body content, so append it and immediately close the last open tag
                     bodyEnclosed = false;
                 }
             }
 
-            if (!bodyEnclosed && !openTags.isEmpty()) {
+            if (!bodyEnclosed && !openTags.isEmpty())
+            {
                 errorMsg = String.format("Line %d: Missing closing tag for '%s'.", lineNumber, openTags.popTag());
             }
 
-            if (!annotatedLine.isEmpty()) {
-                if (!errorMsg.isEmpty()) {
+            if (!annotatedLine.isEmpty())
+            {
+                if (!errorMsg.isEmpty())
+                {
                     annotatedLine.append(padding).append("<!-- Error: ").append(errorMsg).append(" -->");
                 }
                 annotatedLines.add(String.valueOf(annotatedLine));
@@ -77,7 +97,8 @@ public class XmlHandler
         }
 
         // Add missing closing tags for remaining open tags
-        while (!openTags.isEmpty()) {
+        while (!openTags.isEmpty())
+        {
             String openTag = openTags.popTag();
             if (openTags.isTagRepeatedOnce(openTag))
                 annotatedLines.add(String.format("<!-- Missing closing tag for opening tag '%s'. -->", openTag)); // Add each missing closing tag on a new line
