@@ -294,14 +294,13 @@ public class mainApplication implements Initializable {
 
     public void search_but(ActionEvent actionEvent) {
     }
-
-    public void undo_but(ActionEvent actionEvent) {
-    }
-
-    public void redo_but(ActionEvent actionEvent) {
-    }
-
     public void gragh_Butt(ActionEvent actionEvent) {
+        if (!isInputEmpty()) {
+            String[] inputLines = inputArea.getText().split("\n");
+           SocialNetworkGraph output = Functions.draw(inputLines);
+            outputArea.setText(output.printUsers());
+            updateFeedback("file is drawn");
+        }
     }
 
     public void network_but(ActionEvent actionEvent) {

@@ -65,7 +65,6 @@ public interface Functions {
         String data = String.join(" ", s);
         SocialNetworkGraph graph = new SocialNetworkGraph();
         graph.buildGraphFromXML(data);
-
         return graph;
     }
     static String[] networkAnalysis(String[] s){
