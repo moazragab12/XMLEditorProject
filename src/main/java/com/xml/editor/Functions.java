@@ -60,8 +60,12 @@ public interface Functions {
         s=originalData.split(String.valueOf((char) (256)));
         return s;
     }
-    static ImageView draw(String[] s){
-        return new ImageView();
+    static SocialNetworkGraph draw(String[] s){
+        String data = String.join(" ", s);
+        SocialNetworkGraph graph = new SocialNetworkGraph();
+        graph.buildGraphFromXML(data);
+
+        return graph;
     }
     static String[] networkAnalysis(String[] s){
         return  s;
