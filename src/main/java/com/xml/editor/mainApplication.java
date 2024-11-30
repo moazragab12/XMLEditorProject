@@ -1,6 +1,7 @@
 package com.xml.editor;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -14,6 +15,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
@@ -303,7 +305,19 @@ public class mainApplication implements Initializable {
         }
     }
 
-    public void network_but(ActionEvent actionEvent) {
+    public void network_but(ActionEvent actionEvent) throws IOException {
+
+        Stage mainStage = (Stage) themeToggleImage.getScene().getWindow();
+        mainStage.close();
+        FXMLLoader fxmlLoader = new FXMLLoader(Start.class.getResource("networkAnalysis.fxml"));
+        Scene startScene = new Scene(fxmlLoader.load(), 800, 450);
+        Stage stage = new Stage();
+        stage.setScene(startScene);
+        stage.show();
+        stage.setTitle(" Network Analysis");
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/photos/logo3.png")).toExternalForm()));
+        stage.setResizable(false);
+        stage.centerOnScreen();
     }
 
 }
