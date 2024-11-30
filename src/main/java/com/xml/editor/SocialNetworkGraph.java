@@ -15,13 +15,13 @@ class SocialNetworkGraph {
     }
 
     public void buildGraphFromXML(String xml) {
-        xml = xml.replaceAll("\\s*\n\\s*", "");
+        xml = xml.replaceAll("\\s*\n\\s*", ""); // Clean up input XML
 
         Pattern userPattern = Pattern.compile("<user>(.*?)</user>");
-        Pattern idPattern = Pattern.compile("<id>(.*?)</id>");
+        Pattern idPattern = Pattern.compile("<id>(\\d+)</id>"); // Match numeric IDs
         Pattern namePattern = Pattern.compile("<name>(.*?)</name>");
         Pattern postPattern = Pattern.compile("<body>(.*?)</body>");
-        Pattern followerPattern = Pattern.compile("<follower>(.*?)</follower>");
+        Pattern followerIdPattern = Pattern.compile("<follower>\\s*<id>(\\d+)</id>\\s*</follower>"); // Match <id> inside <follower>
 
         Matcher userMatcher = userPattern.matcher(xml);
 
@@ -41,7 +41,7 @@ class SocialNetworkGraph {
                 user.posts.add(postMatcher.group(1));
             }
 
-            Matcher followerMatcher = followerPattern.matcher(userBlock);
+            Matcher followerMatcher = followerIdPattern.matcher(userBlock);
             while (followerMatcher.find()) {
                 int followerId = Integer.parseInt(followerMatcher.group(1));
                 user.followers.add(followerId);
