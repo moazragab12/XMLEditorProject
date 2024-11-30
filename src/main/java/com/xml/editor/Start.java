@@ -12,31 +12,28 @@ import java.util.Objects;
 public class Start extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Start.class.getResource("mainApplication.fxml"));
-        Scene startScene = new Scene(fxmlLoader.load(), 1280, 720);
+        FXMLLoader fxmlLoader = new FXMLLoader(Start.class.getResource("Menu.fxml"));
+        Scene startScene = new Scene(fxmlLoader.load(), 800, 450);
         stage.setScene(startScene);
         stage.show();
         stage.setTitle(" XML Editor");
-        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/photoes/logo1.png.jpg")).toExternalForm()));
-        stage.setResizable(true);
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/photos/logo3.png")).toExternalForm()));
+        stage.setResizable(false);
         stage.centerOnScreen();
-        stage.setMinWidth(1300); // Minimum width for the scene
-        stage.setMinHeight(770); // Minimum height for the scene
     }
 
     public static void main(String[] args) {
         // CLI PART
-        if (args.length == 0) {
-            System.out.println("No command provided. Please specify an action.");
-            launch();
-        }
-        else{
-            CommandLine cli = new CommandLine(args);
-            cli.execute();
-            return;
-        }
+//        if (args.length == 0) {
+//            System.out.println("No command provided. Please specify an action.");
+//            return;
+//        }
 
-        // END OF CLI PART
+//        CommandLine cli = new CommandLine(args);
+//        cli.execute();
+//        // END OF CLI PART
+        commandLineV2.processCommand(args);
+        launch();
 
     }
 }

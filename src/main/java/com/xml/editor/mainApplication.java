@@ -150,11 +150,12 @@ public class mainApplication implements Initializable {
             String[] inputLines = inputArea.getText().split("\n");
             String[] errors = Functions.check(inputLines);
             outputArea.setText(String.join("\n", errors));
-            if (errors[0]==null) {
-                updateFeedback("File is valid");
-            } else {
-                updateFeedback("File is not valid. Please repair it.");
-            }
+            updateFeedback("File is checked");
+//            if (errors[0]==null) {
+//                updateFeedback("File is valid");
+//            } else {
+//                updateFeedback("File is not valid. Please repair it.");
+//            }
         }
     }
 
