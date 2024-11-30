@@ -1,3 +1,5 @@
+package com.xml.editor;
+
 import java.io.IOException;
 import java.nio.file.*;
 import java.util.*;
@@ -21,7 +23,6 @@ public class XmlHandler
         List<String> annotatedLines = new ArrayList<>();
         TagContext openTags = new TagContext();
         int lineNumber = 0;
-
         for (String line : lines)
         {
             lineNumber++;
@@ -210,7 +211,7 @@ public class XmlHandler
         return formattedLines;
     }
 
-    static private List<String> fixLines(List<String> lines)
+    static public List<String> fixLines(List<String> lines)
     {
         List<String> fixedLines = new ArrayList<>();
         TagContext openTags = new TagContext();

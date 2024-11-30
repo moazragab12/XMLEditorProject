@@ -4,19 +4,20 @@ import javafx.scene.image.ImageView;
 import org.json.JSONObject;
 import org.json.XML;
 
+import java.util.List;
 import java.util.Map;
 
 public interface Functions {
     static  String[] check(String[] s){
-        return s;
+        return XmlHandler.checkError(List.of(s)).toArray(new String[0]);
     }
 
     static  String[] repair(String[] s){
-        return s;
+        return XmlHandler.fixLines(List.of(s)).toArray(new String[0]);
     }
 
     static  String[] format(String[] s){
-        return s;
+        return XmlHandler.format(List.of(s)).toArray(new String[0]);
     }
 
     static  String[] xmltoJson(String[] inputxml){
@@ -64,7 +65,6 @@ public interface Functions {
         String data = String.join(" ", s);
         SocialNetworkGraph graph = new SocialNetworkGraph();
         graph.buildGraphFromXML(data);
-
         return graph;
     }
     static String[] networkAnalysis(String[] s){

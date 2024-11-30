@@ -150,11 +150,12 @@ public class mainApplication implements Initializable {
             String[] inputLines = inputArea.getText().split("\n");
             String[] errors = Functions.check(inputLines);
             outputArea.setText(String.join("\n", errors));
-            if (errors[0]==null) {
-                updateFeedback("File is valid");
-            } else {
-                updateFeedback("File is not valid. Please repair it.");
-            }
+            updateFeedback("File is checked");
+//            if (errors[0]==null) {
+//                updateFeedback("File is valid");
+//            } else {
+//                updateFeedback("File is not valid. Please repair it.");
+//            }
         }
     }
 
@@ -293,14 +294,13 @@ public class mainApplication implements Initializable {
 
     public void search_but(ActionEvent actionEvent) {
     }
-
-    public void undo_but(ActionEvent actionEvent) {
-    }
-
-    public void redo_but(ActionEvent actionEvent) {
-    }
-
     public void gragh_Butt(ActionEvent actionEvent) {
+        if (!isInputEmpty()) {
+            String[] inputLines = inputArea.getText().split("\n");
+           SocialNetworkGraph output = Functions.draw(inputLines);
+            outputArea.setText(output.printUsers());
+            updateFeedback("file is drawn");
+        }
     }
 
     public void network_but(ActionEvent actionEvent) {

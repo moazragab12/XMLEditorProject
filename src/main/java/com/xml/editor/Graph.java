@@ -30,10 +30,12 @@ public class Graph {
     }
 
     // Print the graph
-    public void printGraph() {
-        System.out.println("Graph Representation (Adjacency List):");
+    public String printGraph() {
+        StringBuilder temp=new StringBuilder();
+        temp.append("Graph Representation (Adjacency List):");
         for (Map.Entry<Integer, List<Integer>> entry : adjacencyList.entrySet()) {
-            System.out.println("User " + entry.getKey() + " -> " + entry.getValue());
+            temp.append("User ").append(entry.getKey()).append(" -> ").append(entry.getValue());
         }
+        return String.valueOf(temp);
     }
 }

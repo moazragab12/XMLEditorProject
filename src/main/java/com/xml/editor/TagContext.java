@@ -10,7 +10,7 @@ import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Tagcontext
+public class TagContext
 {
     private final Stack<String> openTagsStack = new Stack<>();
     private final TreeMap<String, Integer> freq = new TreeMap<>();

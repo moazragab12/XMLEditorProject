@@ -53,21 +53,22 @@ class SocialNetworkGraph {
         }
     }
 
-    public void printUsers() {
+    public String printUsers() {
         if (users.isEmpty()) {
-            System.out.println("No users found in the graph.");
-            return;
-        }
+           return ("No users found in the graph.");
 
-        System.out.println("Social Network Users:");
-        for (User user : users.values()) {
-            System.out.println(user);
-            System.out.println("--------------------");
         }
+StringBuilder temp= new StringBuilder();
+
+        for (User user : users.values()) {
+            temp.append(user);
+            temp.append("--------------------");
+        }
+        return ("Social Network Users:"+ temp);
     }
 
-    public void printGraph() {
-        graph.printGraph();
+    public String printGraph() {
+       return graph.printGraph();
     }
 
     public User getUserById(int id) {
