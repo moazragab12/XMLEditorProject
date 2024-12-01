@@ -51,7 +51,7 @@ public class mainApplication implements Initializable {
 
 
     // Helper Method: Updates feedback in the feedbackFlow
-    private void updateFeedback(String message) {
+    public void updateFeedback(String message) {
         Text feedbackText = new Text("\n" + message);
         feedbackText.setFill(Color.GRAY);
         feedbackText.setFont(Font.font("Arial", 24));
@@ -166,7 +166,7 @@ public class mainApplication implements Initializable {
 
     // Import File
     public void importFile(ActionEvent actionEvent) {
-        fontSize=12;
+         fontSize=12;
         inputArea.setFont(Font.font(fontSize));
         outputArea.setFont(Font.font(fontSize));
         setupFileChooser();
