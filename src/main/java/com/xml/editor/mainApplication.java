@@ -300,7 +300,7 @@ public class mainApplication implements Initializable {
     public void search_but(ActionEvent actionEvent) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Start.class.getResource("search.fxml"));
         Parent root = fxmlLoader.load();
-        search main=fxmlLoader.getController();
+        SearchController main=fxmlLoader.getController();
         main.draft.setText(inputArea.getText());
         main.output.getChildren().add(new Text(inputArea.getText()));
         Scene startScene = new Scene(root, 800, 450);
