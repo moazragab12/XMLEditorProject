@@ -56,7 +56,7 @@ public class Menu {
                     temp.append(scanner.nextLine()).append("\n");
                 }
 
-            } catch (IOException _) {
+            } catch (IOException ioException) {
                 System.out.println("error");
             }
         }
