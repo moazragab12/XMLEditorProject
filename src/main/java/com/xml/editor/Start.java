@@ -22,7 +22,7 @@ public class Start extends Application {
         stage.centerOnScreen();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // CLI PART
 //        if (args.length == 0) {
 //            System.out.println("No command provided. Please specify an action.");

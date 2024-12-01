@@ -1,16 +1,23 @@
 package com.xml.editor;
+
+import javafx.scene.image.Image;
+
+
+import javax.imageio.ImageIO;
+
+
+import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.FileWriter;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.io.IOException;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
 @FunctionalInterface
 interface commandFunctions {
-    void command(String s);
+    void command(String s) throws IOException;
 }
 class functionsCL {
     public static void compress (String s){
@@ -40,21 +47,57 @@ class functionsCL {
         commandLineV2.write_file(s,5,Functions.decompress(commandLineV2.read_file(s,3)));
         System.out.println("file is decompressed");
     }
-    public static void draw (String s){
+    public static void draw (String s) throws IOException {
+        SocialNetworkGraph graph =Functions.draw(commandLineV2.read_file(s,3));
+        Image image = null;//graph.drawGraph();
+        // Save the BufferedImage as a JPG file
+        File outputFile = new File(s.split(" ")[5]);
+        try {
+            ImageIO.write((RenderedImage) image, "jpg", outputFile);
+            System.out.println("Image saved successfully to: " + outputFile.getAbsolutePath());
+        } catch (IOException e) {
+            System.err.println("Failed to save image: " + e.getMessage());
+        }
 
     }
-    public static void most_active (String s){}
-    public static void most_influencer (String s){}
-    public static void mutual (String s){}
-    public static void suggest (String s){}
-    public static void search (String s){}
+    public static void most_active (String s){
+         User most_active =NetworkAnalysis.mostActive(String.join("\n",commandLineV2.read_file(s,3)));
+        commandLineV2.write_file(s,5,most_active.toString().split("\n"));
+        System.out.println("operation done");
+    }
+    public static void most_influencer (String s){
+        User most_influencer =NetworkAnalysis.mostInfluencer(String.join("\n",commandLineV2.read_file(s,3)));
+        commandLineV2.write_file(s,5,most_influencer.toString().split("\n"));
+        System.out.println("operation done");
+    }
+    public static void mutual (String s){
+        String[] idsAsString=s.split(" ")[5].split(",");
+        int[] ids= Arrays.stream(idsAsString)
+                .mapToInt(Integer::parseInt)
+                .toArray();
+        ArrayList<User> mutual =NetworkAnalysis.mutualFollowers(String.join("\n",commandLineV2.read_file(s,3)),ids);
+        System.out.println(NetworkAnalysis.printAllUsres(mutual));
+    }
+    public static void suggest (String s){
+        String idAsString=s.split(" ")[5];
+        int id= Integer.parseInt(idAsString);
+        ArrayList<User> suggest =NetworkAnalysis.suggestedFollowers(String.join("\n",commandLineV2.read_file(s,3)),id);
+        System.out.println(NetworkAnalysis.printAllUsres(suggest));
+    }
+    public static void search (String s){
+        String search=s.split(" ")[3];
+        if(Objects.equals(s.split(" ")[2], "-w")) System.out.println(String.join("\n", Functions.wordSearch(commandLineV2.read_file(s,5),search)));
+        else{
+            System.out.println(String.join("\n", Functions.topicSearch(commandLineV2.read_file(s,5),search)));
+        }
+    }
 }
 
 
 
 public  class  commandLineV2 {
     static Map<String, commandFunctions> commands;
-    static void processCommand(String[] args) {
+    static void processCommand(String[] args) throws IOException {
         StringBuilder command = new StringBuilder();
         for (String arg : args) {
             command.append(arg).append(" ");
@@ -97,18 +140,18 @@ public  class  commandLineV2 {
     }
     public static String[] read_file (String command,int z){
         String input = command.split(" ")[z];
-        String temp="";
+        StringBuilder temp= new StringBuilder();
         String[] draft ;
         try (Scanner scanner = new Scanner(new File(input))) {
             while (scanner.hasNextLine()) {
-                temp=temp+scanner.nextLine() + "\n";
+                temp.append(scanner.nextLine()).append("\n");
             }
         }
         catch (Exception e) {
             System.out.println("cannot read file please choose valid file");
-            e.printStackTrace();
+
         }
-        return temp.split("\n");
+        return temp.toString().split("\n");
     }
     public static void write_file(String command,int z,String[] text1){
         String path = command.split(" ")[z];
@@ -119,10 +162,10 @@ public  class  commandLineV2 {
             writer.close();
         } catch (Exception e) {
             System.out.println("cannot write on this  file please choose valid file");
-            e.printStackTrace();
+
         }
     }
-    public static void process(String command) {
+    public static void process(String command) throws IOException {
         String commandName = command.split(" ")[1];
 
         boolean isValidCommand = commands.containsKey(commandName);

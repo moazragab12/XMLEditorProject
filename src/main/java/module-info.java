@@ -2,6 +2,7 @@ module com.xml.editor {
     requires javafx.controls;
     requires javafx.fxml;
     requires org.json;
+
     requires java.desktop;
 
 

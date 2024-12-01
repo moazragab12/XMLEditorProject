@@ -316,6 +316,7 @@ public class mainApplication implements Initializable {
         if (!isInputEmpty()) {
             String[] inputLines = inputArea.getText().split("\n");
            SocialNetworkGraph output = Functions.draw(inputLines);
+
             outputArea.setText(output.printUsers());
             updateFeedback("file is drawn");
         }
