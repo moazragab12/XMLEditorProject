@@ -11,15 +11,7 @@
    <ImageView fitHeight="720.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@../../../photos/Wallpaper.png" />
    </ImageView>
-   <Button fx:id="newFileMenu" layoutX="224.0" layoutY="266.0" mnemonicParsing="false" onAction="#newFileMenu" prefHeight="83.0" prefWidth="162.0" style="-fx-background-color: #00000000; -fx-border-color: #ac72ff; -fx-border-radius: 100; -fx-background-radius: 100; -fx-effect: innershadow(gaussian, #ac72ff, 10, 0.8, 0, 0, 12, 12);" text="Start" textFill="#ac72ff">
-      <font>
-         <Font name="Freestyle Script" size="40.0" />
-      </font>
-      <cursor>
-         <Cursor fx:constant="HAND" />
-      </cursor>
-   </Button>
-   <Button fx:id="openFileMenu" layoutX="414.0" layoutY="266.0" mnemonicParsing="false" onAction="#openNewFileMenu" prefHeight="83.0" prefWidth="162.0" style="-fx-background-color: #00000000; -fx-border-color: #ac72ff; -fx-border-radius: 100; -fx-background-radius: 100; -fx-effect: innershadow(gaussian, #ac72ff, 10, 0.8, 0, 0, 12, 12);" text="Open File" textFill="#ac72ff">
+   <Button fx:id="newFileMenu" layoutX="323.0" layoutY="265.0" mnemonicParsing="false" onAction="#newFileMenu" prefHeight="66.0" prefWidth="154.0" style="-fx-background-color: #00000000; -fx-border-color: #ac72ff; -fx-border-radius: 100; -fx-background-radius: 100; -fx-effect: innershadow(gaussian, #ac72ff, 10, 0.8, 0, 0, 12, 12);" text="Start" textFill="#ac72ff">
       <font>
          <Font name="Freestyle Script" size="40.0" />
       </font>
