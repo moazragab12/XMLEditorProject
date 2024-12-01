@@ -3,6 +3,7 @@ package com.xml.editor;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -294,7 +295,20 @@ public class mainApplication implements Initializable {
         }
     }
 
-    public void search_but(ActionEvent actionEvent) {
+    public void search_but(ActionEvent actionEvent) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(Start.class.getResource("search.fxml"));
+        Parent root = fxmlLoader.load();
+        search main=fxmlLoader.getController();
+        main.draft.setText(inputArea.getText());
+        main.output.getChildren().add(new Text(inputArea.getText()));
+        Scene startScene = new Scene(root, 800, 450);
+        Stage stage = new Stage();
+        stage.setScene(startScene);
+        stage.show();
+        stage.setTitle("Search");
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/photos/logo3.png")).toExternalForm()));
+        stage.setResizable(false);
+        stage.centerOnScreen();
     }
     public void gragh_Butt(ActionEvent actionEvent) {
         if (!isInputEmpty()) {
@@ -306,11 +320,11 @@ public class mainApplication implements Initializable {
     }
 
     public void network_but(ActionEvent actionEvent) throws IOException {
-
-        Stage mainStage = (Stage) themeToggleImage.getScene().getWindow();
-        mainStage.close();
         FXMLLoader fxmlLoader = new FXMLLoader(Start.class.getResource("networkAnalysis.fxml"));
-        Scene startScene = new Scene(fxmlLoader.load(), 800, 450);
+        Parent root = fxmlLoader.load();
+        NetworkAnalysisController main=fxmlLoader.getController();
+        main.draft.setText(inputArea.getText());
+        Scene startScene = new Scene(root, 800, 450);
         Stage stage = new Stage();
         stage.setScene(startScene);
         stage.show();

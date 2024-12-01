@@ -10,12 +10,12 @@
 }
 
 .btn-primary {
-    -fx-background-color: #303134;
+    -fx-background-color: #222228;
     -fx-text-fill: white;
     -fx-border-radius: 5px; /* Rounded corners for the button */
     -fx-padding: 8px 16px; /* Adds padding to the button */
     -fx-font-size: 14px; /* Sets a more readable font size */
-    -fx-effect: dropshadow(gaussian, #000000, 5, 0.5, 0, 2); /* Adds a subtle shadow for depth */
+    -fx-effect: drop shadow(gaussian, #000000, 5, 0.5, 0, 2); /* Adds a subtle shadow for depth */
     -fx-transition: background-color 0.3s, -fx-background-color 0.3s; /* Smooth background color transition */
 }
 

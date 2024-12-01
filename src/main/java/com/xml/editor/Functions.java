@@ -73,6 +73,9 @@ public interface Functions {
     static String[] suggest(String[] s,int id){
         return  s;
     }
+    static String[] mutualFollowers(String[] s,int[] id){
+        return  s;
+    }
     static String[] wordSearch(String[] s,String word){
         return  s;
     }
