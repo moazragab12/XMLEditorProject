@@ -312,10 +312,9 @@ public class mainApplication implements Initializable {
             stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/photos/logo3.png")).toExternalForm()));
             stage.setResizable(false);
             stage.centerOnScreen();
+            updateFeedback("");
         }
-        else {
-            updateFeedback("Empty file");
-        }
+
     }
     public void graph_but(ActionEvent actionEvent) throws IOException {
         if (!isInputEmpty()) {
@@ -336,9 +335,7 @@ public class mainApplication implements Initializable {
             stage.centerOnScreen();
             updateFeedback("file is drawn");
         }
-        else {
-            updateFeedback("Empty file");
-        }
+
     }
 
 
@@ -356,9 +353,8 @@ public class mainApplication implements Initializable {
             stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/photos/logo3.png")).toExternalForm()));
             stage.setResizable(false);
             stage.centerOnScreen();
+            updateFeedback("");
         }
-        else {
-            updateFeedback("Empty file");
-        }
+
     }
 }
