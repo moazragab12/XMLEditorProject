@@ -103,7 +103,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="gragh_Butt" alignment="CENTER" mnemonicParsing="false" onAction="#gragh_Butt" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
+                  <Button fx:id="gragh_Butt" alignment="CENTER" mnemonicParsing="false" onAction="#graph_but" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: none;">
                      <graphic>
                         <ImageView fx:id="image_change17" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                            <image>

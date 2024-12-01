@@ -248,7 +248,7 @@ public class mainApplication implements Initializable {
         updateLineNumbers(outputArea,lineNumbers11);
     }
 
-    private void setupFileChooser() {
+    public void setupFileChooser() {
       // fileChooser.setInitialDirectory(new File(System.getProperty("user.home") + "/Desktop"));
         fileChooser.getExtensionFilters().clear();
         fileChooser.getExtensionFilters().addAll(
@@ -298,43 +298,67 @@ public class mainApplication implements Initializable {
     }
 
     public void search_but(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Start.class.getResource("search.fxml"));
-        Parent root = fxmlLoader.load();
-        SearchController main=fxmlLoader.getController();
-        main.draft.setText(inputArea.getText());
-        main.output.getChildren().add(new Text(inputArea.getText()));
-        Scene startScene = new Scene(root, 800, 450);
-        Stage stage = new Stage();
-        stage.setScene(startScene);
-        stage.show();
-        stage.setTitle("Search");
-        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/photos/logo3.png")).toExternalForm()));
-        stage.setResizable(false);
-        stage.centerOnScreen();
+        if (!isInputEmpty()) {
+            FXMLLoader fxmlLoader = new FXMLLoader(Start.class.getResource("search.fxml"));
+            Parent root = fxmlLoader.load();
+            SearchController main=fxmlLoader.getController();
+            main.draft.setText(inputArea.getText());
+            main.output.getChildren().add(new Text(inputArea.getText()));
+            Scene startScene = new Scene(root, 800, 450);
+            Stage stage = new Stage();
+            stage.setScene(startScene);
+            stage.show();
+            stage.setTitle("Search");
+            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/photos/logo3.png")).toExternalForm()));
+            stage.setResizable(false);
+            stage.centerOnScreen();
+        }
+        else {
+            updateFeedback("Empty file");
+        }
     }
-    public void gragh_Butt(ActionEvent actionEvent) throws IOException {
+    public void graph_but(ActionEvent actionEvent) throws IOException {
         if (!isInputEmpty()) {
             String[] inputLines = inputArea.getText().split("\n");
-           SocialNetworkGraph output = Functions.draw(inputLines);
+            SocialNetworkGraph output = Functions.draw(inputLines);
 
-            outputArea.setText(output.printUsers());
+            FXMLLoader fxmlLoader = new FXMLLoader(Start.class.getResource("graph.fxml"));
+            Parent root = fxmlLoader.load();
+            GraphController main = fxmlLoader.getController();
+            main.graph_image.setImage(output.drawGraph());
+            Scene startScene = new Scene(root, 800, 450);
+            Stage stage = new Stage();
+            stage.setScene(startScene);
+            stage.show();
+            stage.setTitle("Graph");
+            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/photos/logo3.png")).toExternalForm()));
+            stage.setResizable(false);
+            stage.centerOnScreen();
             updateFeedback("file is drawn");
+        }
+        else {
+            updateFeedback("Empty file");
         }
     }
 
-    public void network_but(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Start.class.getResource("networkAnalysis.fxml"));
-        Parent root = fxmlLoader.load();
-        NetworkAnalysisController main=fxmlLoader.getController();
-        main.draft.setText(inputArea.getText());
-        Scene startScene = new Scene(root, 800, 450);
-        Stage stage = new Stage();
-        stage.setScene(startScene);
-        stage.show();
-        stage.setTitle(" Network Analysis");
-        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/photos/logo3.png")).toExternalForm()));
-        stage.setResizable(false);
-        stage.centerOnScreen();
-    }
 
+    public void network_but(ActionEvent actionEvent) throws IOException {
+        if (!isInputEmpty()) {
+            FXMLLoader fxmlLoader = new FXMLLoader(Start.class.getResource("networkAnalysis.fxml"));
+            Parent root = fxmlLoader.load();
+            NetworkAnalysisController main=fxmlLoader.getController();
+            main.draft.setText(inputArea.getText());
+            Scene startScene = new Scene(root, 800, 450);
+            Stage stage = new Stage();
+            stage.setScene(startScene);
+            stage.show();
+            stage.setTitle(" Network Analysis");
+            stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResource("/photos/logo3.png")).toExternalForm()));
+            stage.setResizable(false);
+            stage.centerOnScreen();
+        }
+        else {
+            updateFeedback("Empty file");
+        }
+    }
 }

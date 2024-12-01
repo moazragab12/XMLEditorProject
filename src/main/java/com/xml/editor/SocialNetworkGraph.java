@@ -2,6 +2,7 @@ package com.xml.editor;
 import javafx.scene.image.Image;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.io.IOException;
@@ -78,7 +79,7 @@ StringBuilder temp= new StringBuilder();
     public int getTotalUsers() {
         return users.size();
     }
-    public void drawGraph() throws IOException {
-
+    public Image drawGraph() throws IOException {
+        return new Image(String.valueOf(Objects.requireNonNull(getClass().getResource("/photos/logo3.png"))));
     }
 }

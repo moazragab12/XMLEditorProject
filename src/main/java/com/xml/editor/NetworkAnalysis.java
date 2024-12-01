@@ -43,10 +43,12 @@ public class NetworkAnalysis {
     public static ArrayList<User> suggestedFollowers(String s,int id){
         ReadFile(s);
         ArrayList<User> suggest = new ArrayList<>();
+
         return suggest;
     }
     public static String printAllUsres(ArrayList<User> u){
         // implement this
         return "";
     }
+
 }
