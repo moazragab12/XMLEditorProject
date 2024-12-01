@@ -10,6 +10,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -17,6 +18,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -252,8 +254,8 @@ public class mainApplication implements Initializable {
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("XML Files", "*.xml"),
                 new FileChooser.ExtensionFilter("Text Files", "*.txt"),
-                new FileChooser.ExtensionFilter("Compressed Files", "*.comp")
-
+                new FileChooser.ExtensionFilter("Compressed Files", "*.comp"),
+                new FileChooser.ExtensionFilter("json Files", "*.json")
                 );
     }
 
@@ -310,7 +312,7 @@ public class mainApplication implements Initializable {
         stage.setResizable(false);
         stage.centerOnScreen();
     }
-    public void gragh_Butt(ActionEvent actionEvent) {
+    public void gragh_Butt(ActionEvent actionEvent) throws IOException {
         if (!isInputEmpty()) {
             String[] inputLines = inputArea.getText().split("\n");
            SocialNetworkGraph output = Functions.draw(inputLines);

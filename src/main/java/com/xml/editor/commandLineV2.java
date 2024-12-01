@@ -3,7 +3,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -11,7 +10,44 @@ import java.util.regex.Pattern;
 
 @FunctionalInterface
 interface commandFunctions {
-    String[] command(String[] s);
+    void command(String s);
+}
+class functionsCL {
+    public static void compress (String s){
+        commandLineV2.write_file(s,5,Functions.compress(commandLineV2.read_file(s,3)));
+        System.out.println("file is compressed");
+    }
+    public static void verify (String s){
+        if(s.split(" ").length==4) System.out.println(String.join("\n", Functions.check(commandLineV2.read_file(s,3))));
+        else{
+            commandLineV2.write_file(s,6,Functions.repair(commandLineV2.read_file(s,3)));
+            System.out.println("file is repaired");
+        }
+    }
+    public static void format (String s){
+        commandLineV2.write_file(s,5,Functions.format(commandLineV2.read_file(s,3)));
+        System.out.println("file is formated");
+    }
+    public static void json (String s){
+        commandLineV2.write_file(s,5,Functions.xmltoJson(commandLineV2.read_file(s,3)));
+        System.out.println("file is converted");
+    }
+    public static void mini (String s){
+        commandLineV2.write_file(s,5,Functions.minify(commandLineV2.read_file(s,3)));
+        System.out.println("file is minified");
+    }
+    public static void decompress (String s){
+        commandLineV2.write_file(s,5,Functions.decompress(commandLineV2.read_file(s,3)));
+        System.out.println("file is decompressed");
+    }
+    public static void draw (String s){
+
+    }
+    public static void most_active (String s){}
+    public static void most_influencer (String s){}
+    public static void mutual (String s){}
+    public static void suggest (String s){}
+    public static void search (String s){}
 }
 
 
@@ -25,8 +61,16 @@ public  class  commandLineV2 {
         }
 
         String regex1 = "xml_editor [a-z]+ -i (\\S+\\.xml) -o (\\S+\\.xml)" +
+                        "|xml_editor json -i (\\S+\\.xml) -o (\\S+\\.json)" +
+                        "|xml_editor compress -i (\\S+\\.xml) -o (\\S+\\.comp)" +
+                        "|xml_editor decompress -i (\\S+\\.comp) -o (\\S+\\.xml)" +
                         "|xml_editor verify -i (\\S+\\.xml)" +
-                        "|xml_editor verify -i (\\S+\\.xml) -f -o (\\S+\\.xml)";
+                        "|xml_editor verify -i (\\S+\\.xml) -f -o (\\S+\\.xml)" +
+                        "|xml_editor draw -i (\\S+\\.xml) -o (\\S+\\.jpg)" +
+                        "|xml_editor mutual -i (\\S+\\.xml) -ids (\\d+(,\\d+)*)" +
+                        "|xml_editor suggest -i (\\S+\\.xml) -id (\\d+)" +
+                        "|xml_editor search -w [a-z] -i (\\S+\\.xml)" +
+                        "|xml_editor search -t [a-z] -i (\\S+\\.xml)";
         Pattern pattern1 = Pattern.compile(regex1);
         Matcher matcher1 = pattern1.matcher(command.toString().trim());
         initFunctions();
@@ -38,12 +82,45 @@ public  class  commandLineV2 {
     }
     public static void initFunctions() {
         commands = new HashMap<>();
-        commands.put("compress", Functions::compress);
-        commands.put("verify", Functions::check);
-        commands.put("format", Functions::format);
-        commands.put("json", Functions::xmltoJson);
-        commands.put("mini", Functions::minify);
-        commands.put("decompress", Functions::decompress);
+        commands.put("compress", functionsCL::compress);
+        commands.put("verify", functionsCL::verify);
+        commands.put("format", functionsCL::format);
+        commands.put("json", functionsCL::json);
+        commands.put("mini", functionsCL::mini);
+        commands.put("decompress", functionsCL::decompress);
+        commands.put("draw", functionsCL::draw);
+        commands.put("most_active", functionsCL::most_active);
+        commands.put("most_influencer", functionsCL::most_influencer);
+        commands.put("mutual", functionsCL::mutual);
+        commands.put("suggest", functionsCL::suggest);
+        commands.put("search", functionsCL::search);
+    }
+    public static String[] read_file (String command,int z){
+        String input = command.split(" ")[z];
+        String temp="";
+        String[] draft ;
+        try (Scanner scanner = new Scanner(new File(input))) {
+            while (scanner.hasNextLine()) {
+                temp=temp+scanner.nextLine() + "\n";
+            }
+        }
+        catch (Exception e) {
+            System.out.println("cannot read file please choose valid file");
+            e.printStackTrace();
+        }
+        return temp.split("\n");
+    }
+    public static void write_file(String command,int z,String[] text1){
+        String path = command.split(" ")[z];
+        String text=String.join("\n",text1);
+        try {
+            FileWriter writer = new FileWriter(path);
+            writer.write(text);
+            writer.close();
+        } catch (Exception e) {
+            System.out.println("cannot write on this  file please choose valid file");
+            e.printStackTrace();
+        }
     }
     public static void process(String command) {
         String commandName = command.split(" ")[1];
@@ -51,52 +128,9 @@ public  class  commandLineV2 {
         boolean isValidCommand = commands.containsKey(commandName);
         if (isValidCommand) {
             commandFunctions function =  commands.get(commandName);
-            String input = command.split(" ")[3];
-            String output;
-            String temp="";
-            String[] draft ;
-            try (Scanner scanner = new Scanner(new File(input))) {
-                while (scanner.hasNextLine()) {
-                    temp=temp+scanner.nextLine() + "\n";
-                }
-            }
-            catch (Exception e) {
-                System.out.println("cannot read file please choose valid file");
-                e.printStackTrace();
-            }
-            String[] inputLines =temp.split("\n");
-            if(!Objects.equals(commandName, "verify")){
-                draft=function.command(inputLines);
-                 output = command.split(" ")[5];
-            try {
-                FileWriter writer = new FileWriter(output);
-                writer.write(String.join("\n", draft));
-                writer.close();
-            } catch (Exception e) {
-                System.out.println("cannot write on this  file please choose valid file");
-                e.printStackTrace();
-            }}
-            else if(command.split(" ").length==4){
-                draft=function.command(inputLines);
-                System.out.println(String.join("\n", draft));
-            }
-            else{
-                draft=function.command(inputLines);
-                System.out.println(String.join("\n", draft));
-                draft=Functions.repair(inputLines);
-                output = command.split(" ")[6];
-                try {
-                    FileWriter writer = new FileWriter(output);
-                    writer.write(String.join("\n", draft));
-                    writer.close();
-                } catch (Exception e) {
-                    System.out.println("cannot write on this  file please choose valid file");
-                    e.printStackTrace();
-                }
-            }
-
-
-        } else {
+            function.command(command);
+           }
+            else {
             System.out.println("There is no command named " + commandName);
             String suggestion = getClosestCommand(commandName);
             if (suggestion != null) {

@@ -1,10 +1,10 @@
 package com.xml.editor;
-
+import javafx.scene.image.Image;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+import java.io.IOException;
 class SocialNetworkGraph {
     Map<Integer, User> users;
     Graph graph;
@@ -77,5 +77,8 @@ StringBuilder temp= new StringBuilder();
 
     public int getTotalUsers() {
         return users.size();
+    }
+    public void drawGraph() throws IOException {
+
     }
 }
