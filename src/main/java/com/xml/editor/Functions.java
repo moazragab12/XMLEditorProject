@@ -6,6 +6,7 @@ import org.json.XML;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public interface Functions {
     static  String[] check(String[] s){
@@ -72,14 +73,14 @@ public interface Functions {
     }
     static String[] suggest(String[] s,int id){
         Suggest Suggest = new Suggest();
-        Suggest.buildGraphFromXML(s);
+        Suggest.buildGraphFromXML(String.join("\n",s));
         Set<User> suggestedFriends = Suggest.suggestFriends(id);
         String [] out= new String[suggestedFriends.size()] ;
         int i=0;
             for (User user : suggestedFriends) {
                 out[i] = user.id + ": " +user.name ;
                 i=i+1;
-            }
+}
         return out;
     }
     static String[] mutualFollowers(String[] s,int[] id){

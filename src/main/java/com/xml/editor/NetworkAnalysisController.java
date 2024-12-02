@@ -61,8 +61,12 @@ public class NetworkAnalysisController {
     public void suggestUserPress(ActionEvent actionEvent) {
         String[] xml =draft.getText().split("\n");
         try {
-            output.getChildren().add(new Text(String.join("\n",Functions.suggest(xml,Integer.parseInt(suggestUser.getText())))));
+            output.getChildren().clear();
+            String s=String.join("\n",Functions.suggest(xml,Integer.parseInt(suggestUser.getText())));
+            if(s.isEmpty())output.getChildren().add(new Text("No Suggestions for the user with id "+suggestUser.getText()));
+            else output.getChildren().add(new Text(s));
         } catch (Exception e) {
+            output.getChildren().clear();
             output.getChildren().add(new Text("Invalid input: " + suggestUser.getText()));
         }
 
