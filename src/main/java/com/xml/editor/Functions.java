@@ -74,9 +74,11 @@ public interface Functions {
         Suggest Suggest = new Suggest();
         Suggest.buildGraphFromXML(s);
         Set<User> suggestedFriends = Suggest.suggestFriends(id);
-        String out = "";
+        String [] out= new String[suggestedFriends.size()] ;
+        int i=0;
             for (User user : suggestedFriends) {
-                out += user.id + ": " +user.name + "\n";
+                out[i] = user.id + ": " +user.name ;
+                i=i+1;
             }
         return out;
     }
