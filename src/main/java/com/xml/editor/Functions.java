@@ -71,7 +71,14 @@ public interface Functions {
         return  s;
     }
     static String[] suggest(String[] s,int id){
-        return  s;
+       Suggest Suggest = new Suggest();
+        Suggest.buildGraphFromXML(s);
+         Set<User> suggestedFriends = Suggest.suggestFriends(id);
+        String out = "";
+            for (User user : suggestedFriends) {
+                out += user.id + ": " +user.name + "\n";
+            }
+        return out;
     }
     static String[] mutualFollowers(String[] s,int[] id){
         return  s;
