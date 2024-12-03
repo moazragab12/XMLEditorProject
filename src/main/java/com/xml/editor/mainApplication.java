@@ -5,12 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -20,6 +22,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -206,6 +209,7 @@ public class mainApplication implements Initializable {
     public void saveAsFile(ActionEvent actionEvent) {
         setupFileChooser();
         if (!outputArea.getText().isEmpty()) {
+
             File saveFile = fileChooser.showSaveDialog(themeToggleImage.getScene().getWindow());
             if (saveFile != null) {
                 try {
@@ -248,14 +252,15 @@ public class mainApplication implements Initializable {
         updateLineNumbers(outputArea,lineNumbers11);
     }
 
-    public void setupFileChooser() {
+    public  void setupFileChooser() {
       // fileChooser.setInitialDirectory(new File(System.getProperty("user.home") + "/Desktop"));
         fileChooser.getExtensionFilters().clear();
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("XML Files", "*.xml"),
                 new FileChooser.ExtensionFilter("Text Files", "*.txt"),
                 new FileChooser.ExtensionFilter("Compressed Files", "*.comp"),
-                new FileChooser.ExtensionFilter("json Files", "*.json")
+                new FileChooser.ExtensionFilter("json Files", "*.json"),
+                new FileChooser.ExtensionFilter("image", "*.jpg")
                 );
     }
 
@@ -316,15 +321,26 @@ public class mainApplication implements Initializable {
         }
 
     }
+
     public void graph_but(ActionEvent actionEvent) throws IOException {
         if (!isInputEmpty()) {
+            Pane root = new Pane();
             String[] inputLines = inputArea.getText().split("\n");
             SocialNetworkGraph output = Functions.draw(inputLines);
+            Canvas graphCanvas = output.drawGraphOnCanvas(800, 450);
+            root.getChildren().add(graphCanvas);
+            // Create a "Save" button
+            Button saveButton = new Button("Save");
+            saveButton.setLayoutX(700); // Position the button on the Pane (X-coordinate)
+            saveButton.setLayoutY(400); // Position the button on the Pane (Y-coordinate)
+            root.getChildren().add(saveButton);
 
-            FXMLLoader fxmlLoader = new FXMLLoader(Start.class.getResource("graph.fxml"));
-            Parent root = fxmlLoader.load();
-            GraphController main = fxmlLoader.getController();
-            main.graph_image.setImage(output.drawGraph());
+            // Set up button action to save the Canvas
+            saveButton.setOnAction(e -> {
+                    SocialNetworkGraph.saveCanvasAsJPG(graphCanvas); // Call the save function
+                 });
+
+            // Set up the scene and stage
             Scene startScene = new Scene(root, 800, 450);
             Stage stage = new Stage();
             stage.setScene(startScene);
@@ -335,7 +351,6 @@ public class mainApplication implements Initializable {
             stage.centerOnScreen();
             updateFeedback("file is drawn");
         }
-
     }
 
 

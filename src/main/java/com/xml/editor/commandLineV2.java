@@ -1,11 +1,16 @@
 package com.xml.editor;
 
+import javafx.application.Platform;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.image.Image;
+import javafx.scene.image.WritableImage;
 
 
 import javax.imageio.ImageIO;
 
 
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.FileWriter;
@@ -22,43 +27,70 @@ interface commandFunctions {
 class functionsCL {
     public static void compress (String s){
         commandLineV2.write_file(s,5,Functions.compress(commandLineV2.read_file(s,3)));
-        System.out.println("file is compressed");
+        System.out.println("file  compressed");
     }
     public static void verify (String s){
         if(s.split(" ").length==4) System.out.println(String.join("\n", Functions.check(commandLineV2.read_file(s,3))));
         else{
             commandLineV2.write_file(s,6,Functions.repair(commandLineV2.read_file(s,3)));
-            System.out.println("file is repaired");
+            System.out.println("file  repaired");
         }
     }
     public static void format (String s){
         commandLineV2.write_file(s,5,Functions.format(commandLineV2.read_file(s,3)));
-        System.out.println("file is formated");
+        System.out.println("file  formated");
     }
     public static void json (String s){
         commandLineV2.write_file(s,5,Functions.xmltoJson(commandLineV2.read_file(s,3)));
-        System.out.println("file is converted");
+        System.out.println("file  converted");
     }
     public static void mini (String s){
         commandLineV2.write_file(s,5,Functions.minify(commandLineV2.read_file(s,3)));
-        System.out.println("file is minified");
+        System.out.println("file  minified");
     }
     public static void decompress (String s){
         commandLineV2.write_file(s,5,Functions.decompress(commandLineV2.read_file(s,3)));
-        System.out.println("file is decompressed");
+        System.out.println("file  decompressed");
     }
-    public static void draw (String s) throws IOException {
-        SocialNetworkGraph graph =Functions.draw(commandLineV2.read_file(s,3));
-        Image image = null;//graph.drawGraph();
-        // Save the BufferedImage as a JPG file
-        File outputFile = new File(s.split(" ")[5]);
-        try {
-            ImageIO.write((RenderedImage) image, "jpg", outputFile);
-            System.out.println("Image saved successfully to: " + outputFile.getAbsolutePath());
-        } catch (IOException e) {
-            System.err.println("Failed to save image: " + e.getMessage());
-        }
+    public static void draw(String s) throws IOException {
+        // Run the drawing code on the JavaFX Application Thread
+        Platform.runLater(() -> {
+            // Draw graph on the canvas
+            SocialNetworkGraph graph = Functions.draw(commandLineV2.read_file(s, 3));
+            Canvas canvas = graph.drawGraphOnCanvas(800, 600);
 
+            // Create a WritableImage to take a snapshot of the canvas
+            WritableImage writableImage = new WritableImage((int) canvas.getWidth(), (int) canvas.getHeight());
+            Image image = canvas.snapshot(null, writableImage);  // Taking snapshot of canvas
+
+            // Extract the file name from input string (make sure it’s a valid file path)
+            String[] parts = s.split(" ");
+            String filePath = (parts.length > 5) ? parts[5] : "output.jpg";  // Default to "output.jpg" if no path is found
+
+            // Ensure file path ends with .jpg extension
+            if (!filePath.endsWith(".jpg")) {
+                filePath += ".jpg";  // Add .jpg if it's not already present
+            }
+
+            // Convert the JavaFX Image to a BufferedImage
+            BufferedImage bufferedImage = new BufferedImage((int) canvas.getWidth(), (int) canvas.getHeight(), BufferedImage.TYPE_INT_RGB);
+            for (int x = 0; x < canvas.getWidth(); x++) {
+                for (int y = 0; y < canvas.getHeight(); y++) {
+                    javafx.scene.paint.Color fxColor = writableImage.getPixelReader().getColor(x, y);
+                    Color awtColor = new Color((float) fxColor.getRed(), (float) fxColor.getGreen(), (float) fxColor.getBlue());
+                    bufferedImage.setRGB(x, y, awtColor.getRGB());
+                }
+            }
+
+            // Save the BufferedImage as a JPG file
+            File outputFile = new File(filePath);
+            try {
+                ImageIO.write(bufferedImage, "jpg", outputFile);
+                System.out.println("file drawn " );
+            } catch (IOException e) {
+                System.err.println("Failed to save image: " + e.getMessage());
+            }
+        });
     }
     public static void most_active (String s){
          User most_active =NetworkAnalysis.mostActive(String.join("\n",commandLineV2.read_file(s,3)));
@@ -81,8 +113,9 @@ class functionsCL {
     public static void suggest (String s){
         String idAsString=s.split(" ")[5];
         int id= Integer.parseInt(idAsString);
-        ArrayList<User> suggest =NetworkAnalysis.suggestedFollowers(String.join("\n",commandLineV2.read_file(s,3)),id);
-        System.out.println(NetworkAnalysis.printAllUsres(suggest));
+        String[] suggest =Functions.suggest(commandLineV2.read_file(s,3),id);
+        if(String.join("\n",suggest).isEmpty()) System.out.println("No Suggestions for the user with id: "+ id);
+        else System.out.println(String.join("\n",suggest));
     }
     public static void search (String s){
         String search=s.split(" ")[3];
@@ -141,7 +174,6 @@ public  class  commandLineV2 {
     public static String[] read_file (String command,int z){
         String input = command.split(" ")[z];
         StringBuilder temp= new StringBuilder();
-        String[] draft ;
         try (Scanner scanner = new Scanner(new File(input))) {
             while (scanner.hasNextLine()) {
                 temp.append(scanner.nextLine()).append("\n");
