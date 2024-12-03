@@ -5,9 +5,10 @@
 }
 
 .primary {
+ -fx-text-fill: white;
     -fx-background-color: #222228;
     -fx-padding: 10px; /* Adds space to the primary content */
-}
+   }
 
 .btn-primary {
     -fx-background-color: #222228;

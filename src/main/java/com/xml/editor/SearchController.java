@@ -21,10 +21,12 @@ public class SearchController {
     boolean isLightMode = false;
 
     public void wordpress(ActionEvent actionEvent) {
+        output.getChildren().clear();
         output.getChildren().add(new Text(String.join("\n",Functions.wordSearch(draft.getText().split("\n"),word.getText()))));
     }
 
     public void topicPress(ActionEvent actionEvent) {
+        output.getChildren().clear();
         output.getChildren().add(new Text(String.join("\n",Functions.topicSearch(draft.getText().split("\n"),topic.getText()))));
 
     }

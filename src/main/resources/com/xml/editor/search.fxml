@@ -38,16 +38,16 @@
                 </Button>
             </children>
         </HBox>
-        <ScrollPane layoutX="56.0" layoutY="72.0" styleClass="scroll-bar">
+        <ScrollPane layoutX="56.0" layoutY="72.0" prefHeight="187.0" prefWidth="696.0" styleClass="primary">
             <content>
-                <TextFlow fx:id="output" lineSpacing="3.0" prefHeight="194.0" prefWidth="687.0" styleClass="primary" />
+                <TextFlow fx:id="output" lineSpacing="3.0" prefHeight="166.0" prefWidth="661.0" styleClass="primary" />
             </content>
         </ScrollPane>
-        <Button fx:id="wordpress" layoutX="142.0" layoutY="327.0" mnemonicParsing="false" onAction="#wordpress" styleClass="btn-primary" text="Write posts">
+        <Button fx:id="wordpress" layoutX="158.0" layoutY="327.0" mnemonicParsing="false" onAction="#wordpress" styleClass="btn-primary" text="Search">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor></Button>
-        <Button fx:id="topicPress" layoutX="616.0" layoutY="327.0" mnemonicParsing="false" onAction="#topicPress" styleClass="btn-primary" text="Write posts">
+        <Button fx:id="topicPress" layoutX="632.0" layoutY="327.0" mnemonicParsing="false" onAction="#topicPress" styleClass="btn-primary" text="Search">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor></Button>

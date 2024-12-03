@@ -38,9 +38,9 @@
                 </Button>
             </children>
         </HBox>
-      <ScrollPane layoutX="56.0" layoutY="72.0" styleClass="scroll-bar">
+      <ScrollPane layoutX="39.0" layoutY="70.0" prefHeight="182.0" prefWidth="722.0" styleClass="primary">
          <content>
-              <TextFlow fx:id="output" lineSpacing="3.0" prefHeight="194.0" prefWidth="687.0" styleClass="primary" textAlignment="CENTER" />
+              <TextFlow fx:id="output" lineSpacing="3.0" prefHeight="172.0" prefWidth="688.0" styleClass="primary" textAlignment="CENTER" />
          </content>
       </ScrollPane>
       <Button fx:id="mutualuserpress" layoutX="96.0" layoutY="335.0" mnemonicParsing="false" onAction="#mutualuserpress" styleClass="btn-primary" text="Print  mutual users">

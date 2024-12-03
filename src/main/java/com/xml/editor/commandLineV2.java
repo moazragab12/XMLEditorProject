@@ -145,8 +145,8 @@ public  class  commandLineV2 {
                         "|xml_editor draw -i (\\S+\\.xml) -o (\\S+\\.jpg)" +
                         "|xml_editor mutual -i (\\S+\\.xml) -ids (\\d+(,\\d+)*)" +
                         "|xml_editor suggest -i (\\S+\\.xml) -id (\\d+)" +
-                        "|xml_editor search -w [a-z] -i (\\S+\\.xml)" +
-                        "|xml_editor search -t [a-z] -i (\\S+\\.xml)";
+                        "(?i)|xml_editor search -w [a-z]+ -i (\\S+\\.xml)" +
+                        "|xml_editor search -t [a-z]+ -i (\\S+\\.xml)";
         Pattern pattern1 = Pattern.compile(regex1);
         Matcher matcher1 = pattern1.matcher(command.toString().trim());
         initFunctions();

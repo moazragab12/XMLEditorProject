@@ -87,10 +87,10 @@ public interface Functions {
         return  s;
     }
     static String[] wordSearch(String[] s,String word){
-        return  s;
+        return s; //search.wordSearch(s,word).toArray(new String[0]);
     }
     static String[] topicSearch(String[] s,String topic){
-        return  s;
+        return s; //search.topicSearch(s,topic).toArray(new String[0]);
     }
 
 
