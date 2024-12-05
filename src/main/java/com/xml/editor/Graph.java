@@ -38,4 +38,10 @@ public class Graph {
         }
         return String.valueOf(temp);
     }
+
+    // Check if two nodes are directly connected
+    public boolean areConnected(int from, int to) {
+        return adjacencyList.getOrDefault(from, Collections.emptyList()).contains(to);
+    }
 }
+

@@ -22,4 +22,13 @@ class User {
                         "Followers: %s\n",
                 id, name, posts, followers);
     }
+
+    public String printUsers() {
+        return String.format("User ID: %d, Name: %s\n",
+                id, name);
+    }
+
+    public int getId(){
+        return id;
+    }
 }
