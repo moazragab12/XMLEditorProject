@@ -141,6 +141,8 @@ public  class  commandLineV2 {
                         "|xml_editor compress -i (\\S+\\.xml) -o (\\S+\\.comp)" +
                         "|xml_editor decompress -i (\\S+\\.comp) -o (\\S+\\.xml)" +
                         "|xml_editor verify -i (\\S+\\.xml)" +
+                        "|xml_editor most_active -i (\\S+\\.xml)" +
+                        "|xml_editor most_influencer -i (\\S+\\.xml)" +
                         "|xml_editor verify -i (\\S+\\.xml) -f -o (\\S+\\.xml)" +
                         "|xml_editor draw -i (\\S+\\.xml) -o (\\S+\\.jpg)" +
                         "|xml_editor mutual -i (\\S+\\.xml) -ids (\\d+(,\\d+)*)" +
