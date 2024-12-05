@@ -69,7 +69,13 @@ public interface Functions {
         return graph;
     }
     static String[] networkAnalysis(String[] s){
-        return  s;
+        StringBuilder user=new StringBuilder();
+        user.append("mos influencer:");
+        user.append(NetworkAnalysis.mostInfluencer(String.join("\n",s)).toString());
+        user.append("\n");
+        user.append("most active:");
+        user.append(NetworkAnalysis.mostActive(String.join("\n",s)).toString());
+        return user.toString().split("\n")  ;
     }
     static String[] suggest(String[] s,int id){
         Suggest Suggest = new Suggest();
@@ -84,7 +90,7 @@ public interface Functions {
         return out;
     }
     static String[] mutualFollowers(String[] s,int[] id){
-        return  s;
+        return  NetworkAnalysis.printAllUsres(NetworkAnalysis.mutualFollowers(String.join("\n",s),id)).split("\n");
     }
     static String[] wordSearch(String[] s,String word){
         return s; //search.wordSearch(s,word).toArray(new String[0]);

@@ -94,13 +94,13 @@ class functionsCL {
     }
     public static void most_active (String s){
          User most_active =NetworkAnalysis.mostActive(String.join("\n",commandLineV2.read_file(s,3)));
-        commandLineV2.write_file(s,5,most_active.toString().split("\n"));
-        System.out.println("operation done");
+        System.out.println(most_active.toString());
+
     }
     public static void most_influencer (String s){
         User most_influencer =NetworkAnalysis.mostInfluencer(String.join("\n",commandLineV2.read_file(s,3)));
-        commandLineV2.write_file(s,5,most_influencer.toString().split("\n"));
-        System.out.println("operation done");
+        System.out.println(most_influencer.toString());
+
     }
     public static void mutual (String s){
         String[] idsAsString=s.split(" ")[5].split(",");

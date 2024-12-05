@@ -45,17 +45,22 @@ public class NetworkAnalysisController {
     public void mutualuserpress(ActionEvent actionEvent) {
         int i;
         String[] xml =draft.getText().split("\n");
-        String[] stringArray =mutualUsers.getText().split("\n");
+        String[] stringArray =mutualUsers.getText().split(" ");
         int[] intArray = new int[stringArray.length];
         for (i = 0; i < stringArray.length; i++) {
             try {
                 intArray[i] = Integer.parseInt(stringArray[i]);
+                System.out.println(intArray[i]);
             } catch (NumberFormatException e) {
+                output.getChildren().clear();
                 output.getChildren().add(new Text("Invalid input: " + stringArray[i]));
                 break;
             }
         }
-        if(i==stringArray.length) output.getChildren().add(new Text(String.join("\n",Functions.mutualFollowers(xml,intArray))));
+        if(i==stringArray.length) {
+            output.getChildren().clear();
+            output.getChildren().add(new Text(String.join("\n",Functions.mutualFollowers(xml,intArray))));
+        }
     }
 
     public void suggestUserPress(ActionEvent actionEvent) {
@@ -75,6 +80,7 @@ public class NetworkAnalysisController {
 
     public void networkDataPress(ActionEvent actionEvent) throws IOException {
       String[] xml =draft.getText().split("\n");
+      output.getChildren().clear();
       output.getChildren().add(new Text(String.join("\n",Functions.networkAnalysis(xml))));
     }
 }
