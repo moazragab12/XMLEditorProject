@@ -1,8 +1,10 @@
 package com.xml.editor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class NetworkAnalysis {
     static User [] users;
@@ -68,18 +70,31 @@ public class NetworkAnalysis {
         return mostActive;
     }
 
-    public static ArrayList<User> mutualFollowers(String s,int[] ids){
+    public static ArrayList<User> mutualFollowers(String s, int[] ids) {
         ReadFile(s);
-        int user1 = ids[0];
-        int user2 = ids[1];
         ArrayList<User> mutualF = new ArrayList<>();
-        for(int i=0; i< users.length; i++){
-            if(graph.isFollowing(users[i].getId(),user1) && graph.isFollowing(users[i].getId(),user2)){
-                mutualF.add(users[i]);
+
+        // Iterate through all users
+        for (User user : users) {
+            boolean follows = true;
+
+            // Check if the current user follows all the users in 'ids'
+            for (int id : ids) {
+                if (!graph.isFollowing(user.getId(), id)) {
+                    follows = false;
+                    break;
+                }
+            }
+
+            // If the user follows all, add them to the mutual followers list
+            if (follows) {
+                mutualF.add(user);
             }
         }
+
         return mutualF;
     }
+
 
     public static String printAllUsres(ArrayList<User> u){
         String s = "";
