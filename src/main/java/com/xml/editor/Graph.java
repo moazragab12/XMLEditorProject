@@ -41,7 +41,13 @@ public class Graph {
 
     // Check if two nodes are directly connected
     public boolean areConnected(int from, int to) {
-        return adjacencyList.getOrDefault(from, Collections.emptyList()).contains(to);
+        return adjacencyList.getOrDefault(from, Collections.emptyList()).contains(to) || adjacencyList.getOrDefault(to, Collections.emptyList()).contains(from);
     }
+
+    public boolean isFollowing(int from, int to) {
+        // Check if the 'from' vertex has an adjacency list, and verify if 'to' exists in it
+        return adjacencyList.get(to).contains(from);
+    }
+
 }
 

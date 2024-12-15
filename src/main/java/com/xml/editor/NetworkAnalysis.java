@@ -21,8 +21,9 @@ public class NetworkAnalysis {
         graph = networkGraph.graph;
     }
 
-    public static User mostInfluencer(String s){
+    public static ArrayList<User> mostInfluencer(String s){
         ReadFile(s);
+        ArrayList<User> mostInf = new ArrayList<>();
         int index = 0;
         int mostfollowed = users[0].followers.size();
         for(int i = 0; i < users.length; i++){
@@ -31,12 +32,18 @@ public class NetworkAnalysis {
                 index = i;
             }
         }
+        for(int i = 0; i < users.length; i++){
+            if(users[i].followers.size() == users[index].followers.size()){
+                mostInf.add(users[i]);
+            }
+        }
 
-        return users[index];
+        return mostInf;
     }
 
-    public static User mostActive(String s){
+    public static ArrayList<User> mostActive(String s){
         ReadFile(s);
+        ArrayList<User> mostActive = new ArrayList<>();
         int index = 0;
         int maxFollowing = 0; //no. of people a user is following
 
@@ -47,12 +54,18 @@ public class NetworkAnalysis {
                     followCount++;
                 }
             }
+            users[i].setFollowing(followCount);
             if(maxFollowing<followCount){
                 maxFollowing = followCount;
                 index = i;
             }
         }
-        return users[index];
+        for(int i = 0; i < users.length; i++){
+            if(users[i].getFollowing() == users[index].getFollowing()){
+                mostActive.add(users[i]);
+            }
+        }
+        return mostActive;
     }
 
     public static ArrayList<User> mutualFollowers(String s,int[] ids){
@@ -61,7 +74,7 @@ public class NetworkAnalysis {
         int user2 = ids[1];
         ArrayList<User> mutualF = new ArrayList<>();
         for(int i=0; i< users.length; i++){
-            if(graph.areConnected(users[i].getId(),user1) && graph.areConnected(users[i].getId(),user2)){
+            if(graph.isFollowing(users[i].getId(),user1) && graph.isFollowing(users[i].getId(),user2)){
                 mutualF.add(users[i]);
             }
         }
@@ -71,7 +84,7 @@ public class NetworkAnalysis {
     public static String printAllUsres(ArrayList<User> u){
         String s = "";
         for(int i=0; i< u.size(); i++){
-            s += u.get(i).printUsers();
+            s += u.get(i).toString();
         }
         return s;
     }
