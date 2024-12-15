@@ -146,9 +146,15 @@ public class mainApplication implements Initializable {
     public void repairFile(ActionEvent actionEvent) {
         if (!isInputEmpty()) {
             String[] inputLines = inputArea.getText().split("\n");
-            String[] output = Functions.repair(inputLines);
-            outputArea.setText(String.join("\n", output));
-            updateFeedback("File repaired");
+            String[] errors = Functions.check(inputLines);
+            if (errors.length==0) {
+                outputArea.setText("");
+                updateFeedback("File is valid");
+            } else {
+                String[] output = Functions.repair(inputLines);
+                outputArea.setText(String.join("\n", output));
+                updateFeedback("File repaired");
+            }
         }
     }
 
@@ -157,13 +163,15 @@ public class mainApplication implements Initializable {
         if (!isInputEmpty()) {
             String[] inputLines = inputArea.getText().split("\n");
             String[] errors = Functions.check(inputLines);
-            outputArea.setText(String.join("\n", errors));
-            updateFeedback("File is checked");
-//            if (errors[0]==null) {
-//                updateFeedback("File is valid");
-//            } else {
-//                updateFeedback("File is not valid. Please repair it.");
-//            }
+         //   outputArea.setText(String.join("\n", errors));
+           // updateFeedback("File is checked");
+            if (errors.length==0) {
+                outputArea.setText("");
+                updateFeedback("File is valid");
+            } else {
+                outputArea.setText(String.join("\n", errors));
+                updateFeedback("File is not valid. Please repair it.");
+            }
         }
     }
 

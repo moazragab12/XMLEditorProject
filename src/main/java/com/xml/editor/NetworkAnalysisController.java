@@ -50,17 +50,20 @@ public class NetworkAnalysisController {
         for (i = 0; i < stringArray.length; i++) {
             try {
                 intArray[i] = Integer.parseInt(stringArray[i]);
-                System.out.println(intArray[i]);
             } catch (NumberFormatException e) {
-                output.getChildren().clear();
-                output.getChildren().add(new Text("Invalid input: " + stringArray[i]));
+
                 break;
             }
         }
-        if(i==stringArray.length) {
+        if(i==stringArray.length&&i!=1) {
             output.getChildren().clear();
             output.getChildren().add(new Text(String.join("\n",Functions.mutualFollowers(xml,intArray))));
+            if(String.join("\n", Functions.mutualFollowers(xml, intArray)).isEmpty())output.getChildren().add(new Text("no mutual followers between this IDS "));
         }
+        else{
+            output.getChildren().clear();
+            output.getChildren().add(new Text("Invalid input: " + stringArray[i]));}
+
     }
 
     public void suggestUserPress(ActionEvent actionEvent) {
