@@ -1,4 +1,4 @@
-package com.example.xmleditor;
+package com.xml.editor;
 
 import java.util.ArrayList;
 import java.util.Arrays;

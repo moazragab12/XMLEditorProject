@@ -1,3 +1,7 @@
+package com.xml.editor;
+
+import com.xml.editor.XMLTagsTracker;
+
 import java.util.*;
 
 public class XMLFixer

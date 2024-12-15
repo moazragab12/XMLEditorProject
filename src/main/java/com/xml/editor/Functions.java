@@ -10,15 +10,15 @@ import java.util.Set;
 
 public interface Functions {
     static  String[] check(String[] s){
-        return XmlHandler.checkError(List.of(s)).toArray(new String[0]);
+        return XMLHandler.check(List.of(s)).toArray(new String[0]);
     }
 
     static  String[] repair(String[] s){
-        return XmlHandler.fixLines(List.of(s)).toArray(new String[0]);
+        return XMLHandler.fix(List.of(s)).toArray(new String[0]);
     }
 
     static  String[] format(String[] s){
-        return XmlHandler.format(List.of(s)).toArray(new String[0]);
+        return XMLHandler.format(List.of(s)).toArray(new String[0]);
     }
 
     static  String[] xmltoJson(String[] inputxml){
@@ -75,7 +75,7 @@ public interface Functions {
         user.append("\n");
         user.append("most active:");
         user.append(NetworkAnalysis.mostActive(String.join("\n",s)).toString());
-        return user.toString().split("\n")  ;
+        return user.toString().split("\n");
     }
     static String[] suggest(String[] s,int id){
         Suggest Suggest = new Suggest();
@@ -93,10 +93,10 @@ public interface Functions {
         return  NetworkAnalysis.printAllUsres(NetworkAnalysis.mutualFollowers(String.join("\n",s),id)).split("\n");
     }
     static String[] wordSearch(String[] s,String word){
-        return s; //search.wordSearch(s,word).toArray(new String[0]);
+        return search.wordSearch(s,word).toArray(new String[0]);
     }
     static String[] topicSearch(String[] s,String topic){
-        return s; //search.topicSearch(s,topic).toArray(new String[0]);
+        return search.topicSearch(s,topic).toArray(new String[0]);
     }
 
 

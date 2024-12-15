@@ -1,3 +1,5 @@
+package com.xml.editor;
+
 import java.util.*;
 
 public class XMLHandler

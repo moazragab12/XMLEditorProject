@@ -95,7 +95,6 @@ class functionsCL {
     public static void most_active (String s){
          ArrayList<User> most_active =NetworkAnalysis.mostActive(String.join("\n",commandLineV2.read_file(s,3)));
         System.out.println(most_active.toString());
-
     }
     public static void most_influencer (String s){
         ArrayList<User> most_influencer =NetworkAnalysis.mostInfluencer(String.join("\n",commandLineV2.read_file(s,3)));
