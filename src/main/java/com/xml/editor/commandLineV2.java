@@ -30,11 +30,14 @@ class functionsCL {
         System.out.println("file  compressed");
     }
     public static void verify (String s){
-        if(s.split(" ").length==4) System.out.println(String.join("\n", Functions.check(commandLineV2.read_file(s,3))));
-        else{
+        if(Functions.check(commandLineV2.read_file(s, 3)).length==0)System.out.println("file is valid");
+        else {if(s.split(" ").length==4) {
+            System.out.println("file isn't valid");
+            System.out.println(String.join("\n", Functions.check(commandLineV2.read_file(s, 3))));
+        }else{
             commandLineV2.write_file(s,6,Functions.repair(commandLineV2.read_file(s,3)));
             System.out.println("file  repaired");
-        }
+        }}
     }
     public static void format (String s){
         commandLineV2.write_file(s,5,Functions.format(commandLineV2.read_file(s,3)));
