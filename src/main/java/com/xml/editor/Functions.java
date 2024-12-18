@@ -1,6 +1,7 @@
 package com.xml.editor;
 
 import javafx.scene.image.ImageView;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.XML;
 
@@ -21,18 +22,65 @@ public interface Functions {
         return XMLHandler.format(List.of(s)).toArray(new String[0]);
     }
 
-    static  String[] xmltoJson(String[] inputxml){
+    public static String[] xmltoJson(String[] inputxml) {
         // Join the array into a single XML string
         String xmlString = String.join("", inputxml);
 
-        // Convert XML to JSONObject
+        // Convert XML to JSONObject using the org.json.XML utility
         JSONObject json = XML.toJSONObject(xmlString);
+
+        // Correct the JSON structure
+        json = correctJsonStructure(json);
 
         // Convert JSONObject to a formatted string (with 5 spaces for indentation)
         String jsonString = json.toString(5);
 
         // Split the JSON string by newlines and return it as an array of strings
         return jsonString.split("\n");
+    }
+
+    private static JSONObject correctJsonStructure(JSONObject json) {
+        // Check if 'socialNetwork' and 'users' elements exist
+        if (json.has("socialNetwork")) {
+            JSONObject socialNetwork = json.getJSONObject("socialNetwork");
+
+            // Ensure 'users' is an array (if it's not, convert it to one)
+            if (socialNetwork.has("users")) {
+                Object users = socialNetwork.get("users");
+
+                if (users instanceof JSONObject) {
+                    // Convert single user object to an array
+                    JSONArray usersArray = new JSONArray();
+                    usersArray.put(socialNetwork.getJSONObject("users"));
+                    socialNetwork.put("users", usersArray);
+                }
+
+                // Process each user and ensure 'posts' and 'followers' are arrays
+                JSONArray usersArray = socialNetwork.getJSONArray("users");
+                for (int i = 0; i < usersArray.length(); i++) {
+                    JSONObject user = usersArray.getJSONObject(i);
+
+                    // Ensure 'posts' is an array
+                    if (user.has("posts") && user.getJSONObject("posts").has("post")) {
+                        JSONArray postsArray = new JSONArray();
+                        if (user.getJSONObject("posts").has("post")) {
+                            postsArray.put(user.getJSONObject("posts").getJSONObject("post"));
+                        }
+                        user.put("posts", postsArray);
+                    }
+
+                    // Ensure 'followers' is an array
+                    if (user.has("followers") && user.getJSONObject("followers").has("follower")) {
+                        JSONArray followersArray = new JSONArray();
+                        if (user.getJSONObject("followers").has("follower")) {
+                            followersArray.put(user.getJSONObject("followers").getInt("follower"));
+                        }
+                        user.put("followers", followersArray);
+                    }
+                }
+            }
+        }
+        return json;
     }
 
     static  String[] minify(String[] s){
