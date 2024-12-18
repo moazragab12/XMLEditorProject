@@ -22,7 +22,7 @@ public interface Functions {
         return XMLHandler.format(List.of(s)).toArray(new String[0]);
     }
 
-    public static String[] xmltoJson(String[] inputxml) {
+     static String[] xmltoJson(String[] inputxml) {
         // Join the array into a single XML string
         String xmlString = String.join("", inputxml);
 
