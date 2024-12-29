@@ -21,7 +21,12 @@ import javafx.scene.text.Font;
 import javafx.stage.FileChooser;
 
 import javax.imageio.ImageIO;
-
+/**
+ * The {@code SocialNetworkGraph} class represents a social network where users can be modeled
+ * as vertices in a graph, with relationships (followers) represented as directed edges between
+ * the users. The class provides methods for building the graph from an XML representation,
+ * visualizing it, and saving the graph as an image.
+ */
 class SocialNetworkGraph {
     Map<Integer, User> users;
     Graph graph;
@@ -30,7 +35,13 @@ class SocialNetworkGraph {
         this.users = new HashMap<>();
         this.graph = new Graph();
     }
-
+    /**
+     * Builds the social network graph from an XML representation.
+     * This method parses the XML string and extracts user information, including their IDs, names,
+     * posts, and followers, and populates the {@code users} map and the {@code graph}.
+     *
+     * @param xml the XML string representing the social network data.
+     */
     public void buildGraphFromXML(String xml) {
         xml = xml.replaceAll("\\s*\n\\s*", ""); // Clean up input XML
 
@@ -68,34 +79,61 @@ class SocialNetworkGraph {
             users.put(userId, user);
             graph.addVertex(userId); // Add the user as a vertex
         }
-    }
+    }    /**
+     * Returns a string representation of all users in the social network.
+     *
+     * @return a string listing all users in the social network.
+     */
 
     public String printUsers() {
         if (users.isEmpty()) {
-           return ("No users found in the graph.");
+            return ("No users found in the graph.");
 
         }
-StringBuilder temp= new StringBuilder();
+        StringBuilder temp = new StringBuilder();
 
         for (User user : users.values()) {
             temp.append(user);
             temp.append("--------------------");
         }
-        return ("Social Network Users:"+ temp);
+        return ("Social Network Users:" + temp);
     }
 
+    /**
+     * Returns a string representation of the entire graph.
+     *
+     * @return the graph's string representation.
+     */
     public String printGraph() {
-       return graph.printGraph();
+        return graph.printGraph();
     }
 
+    /**
+     * Retrieves a user by their ID.
+     *
+     * @param id the ID of the user.
+     * @return the {@code User} object corresponding to the provided ID, or {@code null} if not found.
+     */
     public User getUserById(int id) {
         return users.get(id);
     }
 
+    /**
+     * Returns the total number of users in the social network.
+     *
+     * @return the number of users in the network.
+     */
     public int getTotalUsers() {
         return users.size();
     }
 
+    /**
+     * Draws the graph on a canvas with a circular layout and edge connections.
+     *
+     * @param canvasWidth  the width of the canvas.
+     * @param canvasHeight the height of the canvas.
+     * @return a {@code Canvas} object representing the graph's visualization.
+     */
 
     public Canvas drawGraphOnCanvas(int canvasWidth, int canvasHeight) {
         Canvas canvas = new Canvas(canvasWidth, canvasHeight);
@@ -174,6 +212,15 @@ StringBuilder temp= new StringBuilder();
         return canvas;
     }
 
+    /**
+     * Helper method to draw an arrowhead at the end of an edge.
+     *
+     * @param gc    the {@code GraphicsContext} to use for drawing.
+     * @param fromX the x-coordinate of the starting point of the arrow.
+     * @param fromY the y-coordinate of the starting point of the arrow.
+     * @param toX   the x-coordinate of the endpoint of the arrow.
+     * @param toY   the y-coordinate of the endpoint of the arrow.
+     */
     // Helper method to draw an arrowhead, adjusted for larger circles
     private void drawArrow(GraphicsContext gc, double fromX, double fromY, double toX, double toY) {
         double arrowLength = 12; // Increased length of the arrowhead
@@ -197,15 +244,28 @@ StringBuilder temp= new StringBuilder();
         gc.setFill(Color.GRAY);
         gc.fillPolygon(new double[]{tipX, x1, x2}, new double[]{tipY, y1, y2}, 3);
     }
+    /**
+     * Saves the contents of a {@link Canvas} as a JPG image file.
+     * <p>
+     * This method allows the user to select a location and filename to save the canvas as a JPG image.
+     * It captures the current content of the canvas, converts it to a {@link BufferedImage}, and saves it to a file.
+     * The file extension is checked and ".jpg" will be appended if necessary.
+     * </p>
+     *
+     * @param canvas The {@link Canvas} whose content will be saved as a JPG image.
+     *               The method takes a snapshot of the canvas and converts it into an image file.
+     *
+     * @throws IOException If an error occurs while writing the image to the file.
+     */
     public static void saveCanvasAsJPG(Canvas canvas) {
-        FileChooser fileChooser=new FileChooser();
+        FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("image", "*.jpg")
         );
         File saveFile = fileChooser.showSaveDialog(canvas.getScene().getWindow());
         if (saveFile != null) {
             try {
-                String filePath=saveFile.getPath();
+                String filePath = saveFile.getPath();
                 // Create a WritableImage matching the size of the Canvas
                 WritableImage writableImage = new WritableImage((int) canvas.getWidth(), (int) canvas.getHeight());
 
@@ -236,7 +296,8 @@ StringBuilder temp= new StringBuilder();
                 File outputFile = new File(filePath);
                 ImageIO.write(bufferedImage, "jpg", outputFile);
                 System.out.println("Canvas saved as JPG: " + filePath);
-            } catch (IOException e) {
+            }
+            catch (IOException e) {
                 e.printStackTrace();
                 System.err.println("Error saving canvas as JPG: " + e.getMessage());
             }
