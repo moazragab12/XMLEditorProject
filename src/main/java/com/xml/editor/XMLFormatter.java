@@ -9,13 +9,22 @@ public class XMLFormatter
     private final Stack<String> openTags;
     private final List<String> lines;  // Private data field
 
-    // Constructor now accepts 'lines' as input
+    /**
+     * Constructs an instance of {@code XMLFormatter}.
+     *
+     * @param lines the list of XML lines to be formatted.
+     */
     public XMLFormatter(List<String> lines)
     {
         this.lines = lines;
         this.openTags = new Stack<>();  // Initialize the stack in the constructor
     }
 
+    /**
+     * Formats the XML content to improve its readability by adding proper indentation.
+     *
+     * @return a list of formatted XML lines.
+     */
     public List<String> format()
     {
         List<String> formattedLines = new ArrayList<>();
@@ -31,7 +40,12 @@ public class XMLFormatter
         return formattedLines;
     }
 
-
+    /**
+     * Formats a single line of XML by analyzing its tokens and adding appropriate indentation.
+     *
+     * @param line the XML line to be formatted.
+     * @return the formatted XML line as a string.
+     */
     private String formatLine(String line)
     {
         StringBuilder formattedLine = new StringBuilder();
@@ -60,7 +74,13 @@ public class XMLFormatter
         return formattedLine.toString();
     }
 
-
+    /**
+     * Adds indentation to the given content based on the current indentation level.
+     *
+     * @param content the content to which indentation should be added.
+     * @param indentLevel the current indentation level.
+     * @return the indented content as a string.
+     */
     private String addIndentation(String content, int indentLevel)
     {
         indentLevel = Math.max(indentLevel, 0);

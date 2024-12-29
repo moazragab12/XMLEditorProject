@@ -11,6 +11,12 @@ public class XMLTagUtils
 
     private static final Pattern TAG_PATTERN = Pattern.compile("<[^>]+>");
 
+    /**
+     * Splits a line of text into a list of tokens, separating XML tags and content.
+     *
+     * @param line the line of text to be split.
+     * @return a list of tokens containing XML tags and content.
+     */
     static public List<String> splitTagsAndContent(String line)
     {
         List<String> tokens = new ArrayList<>();
@@ -32,21 +38,47 @@ public class XMLTagUtils
         return tokens;
     }
 
+    /**
+     * Checks if a given closing tag matches the corresponding opening tag.
+     *
+     * @param openTag the opening XML tag.
+     * @param closeTag the closing XML tag.
+     * @return true if the closing tag matches the opening tag, false otherwise.
+     */
     static public boolean isMatched(String openTag, String closeTag)
     {
         return closeTag.equals("</" + openTag.substring(1));
     }
 
+    /**
+     * Determines if a given token is an opening XML tag.
+     *
+     * @param token the token to be checked.
+     * @return true if the token is an opening XML tag, false otherwise.
+     */
     static public boolean isOpenTag(String token)
     {
         return token.startsWith("<") && !token.startsWith("</") && !token.endsWith("/>");
     }
 
+    /**
+     * Determines if a given token is a closing XML tag.
+     *
+     * @param token the token to be checked.
+     * @return true if the token is a closing XML tag, false otherwise.
+     */
     static public boolean isCloseTag(String token)
     {
         return token.startsWith("</") && token.endsWith(">");
     }
 
+    /**
+     * Creates a corresponding closing tag for a given opening tag.
+     *
+     * @param openTag the opening XML tag.
+     * @return the corresponding closing XML tag.
+     * @throws IllegalArgumentException if the opening tag is null or empty.
+     */
     static public String createClosingTag(String openTag)
     {
         if (openTag == null || openTag.isEmpty())
@@ -56,6 +88,13 @@ public class XMLTagUtils
         return "</" + openTag.substring(1);
     }
 
+    /**
+     * Creates a corresponding opening tag for a given closing tag.
+     *
+     * @param closeTag the closing XML tag.
+     * @return the corresponding opening XML tag.
+     * @throws IllegalArgumentException if the closing tag is null or empty.
+     */
     static public String createOpeningTag(String closeTag)
     {
         if (closeTag == null || closeTag.isEmpty())
