@@ -3,20 +3,39 @@ package com.xml.editor;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * The {@code Suggest} class provides functionality to suggest friends for users
+ * in a social network based on their followers and their followers' connections.
+ * It uses an underlying {@link SocialNetworkGraph} to represent the social network.
+ */
 public class Suggest {
 
-    private SocialNetworkGraph socialNetworkGraph;
+    private SocialNetworkGraph socialNetworkGraph; // The graph representing the social network
 
+    /**
+     * Constructs a new {@code Suggest} object and initializes the social network graph.
+     */
     public Suggest() {
         socialNetworkGraph = new SocialNetworkGraph();
     }
 
-    // This method will take the XML string and build the graph
+    /**
+     * Builds the social network graph from the provided XML string.
+     *
+     * @param xml the XML string representing the social network.
+     */
     public void buildGraphFromXML(String xml) {
         socialNetworkGraph.buildGraphFromXML(xml);
     }
 
-    // This method will suggest friends for a given user based on followers of their followers
+    /**
+     * Suggests friends for a given user based on the followers of their followers.
+     * Suggested friends exclude the user themselves and their direct followers.
+     *
+     * @param userId the ID of the user for whom friends are to be suggested.
+     * @return a set of {@code User} objects representing the suggested friends.
+     * If the user is not found, an empty set is returned.
+     */
     public Set<User> suggestFriends(int userId) {
         User user = socialNetworkGraph.getUserById(userId);
 

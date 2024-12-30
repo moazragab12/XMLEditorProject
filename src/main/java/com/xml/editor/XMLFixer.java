@@ -1,9 +1,18 @@
 package com.xml.editor;
 
-import com.xml.editor.XMLTagsTracker;
-
 import java.util.*;
-
+/**
+ * A utility class for fixing XML content by ensuring that all tags are properly opened and closed.
+ * <p>
+ * The {@code XMLFixer} class scans through the provided XML content, identifies mismatched
+ * or missing tags, and ensures the XML structure is well-formed by adding any necessary
+ * opening or closing tags.
+ * </p>
+ * <p>Example usage:</p>
+ * <pre>
+ *     List<String> fixedXml = new XMLFixer(xmlLines).fix();
+ * </pre>
+ */
 public class XMLFixer
 {
     private final List<String> lines;
@@ -11,6 +20,11 @@ public class XMLFixer
     private final Stack<String> bodyStack;
     private final List<String> fixedLines;
 
+    /**
+     * Constructs an instance of {@code XMLFixer}.
+     *
+     * @param lines the list of XML lines that need to be fixed.
+     */
     public XMLFixer(List<String> lines)
     {
         this.lines = lines;
@@ -19,6 +33,15 @@ public class XMLFixer
         fixedLines = new ArrayList<>();
     }
 
+    /**
+     * Fixes the provided XML content by ensuring all tags are properly opened and closed.
+     *
+     * <p>This method iterates through the XML lines, checks for mismatched or missing tags,
+     * and ensures that the XML structure is well-formed by adding the necessary opening or
+     * closing tags where appropriate.</p>
+     *
+     * @return a list of fixed XML lines.
+     */
     public List<String> fix()
     {
         for (String line : lines)
@@ -111,13 +134,6 @@ public class XMLFixer
 
         return fixedLines;
     }
-    void handleOpenTag(StringBuilder fixedLine , String token)
-    {
 
-    }
 
-    void handleCloseTag(StringBuilder fixedLine , String token)
-    {
-
-    }
 }
