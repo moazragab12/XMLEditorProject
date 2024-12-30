@@ -1,7 +1,18 @@
 package com.xml.editor;
 
 import java.util.*;
-
+/**
+ * A utility class for fixing XML content by ensuring that all tags are properly opened and closed.
+ * <p>
+ * The {@code XMLFixer} class scans through the provided XML content, identifies mismatched
+ * or missing tags, and ensures the XML structure is well-formed by adding any necessary
+ * opening or closing tags.
+ * </p>
+ * <p>Example usage:</p>
+ * <pre>
+ *     List<String> fixedXml = new XMLFixer(xmlLines).fix();
+ * </pre>
+ */
 public class XMLFixer
 {
     private final List<String> lines;

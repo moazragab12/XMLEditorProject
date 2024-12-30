@@ -4,7 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+/**
+ * Utility class providing methods for manipulating and analyzing XML tags.
+ * <p>
+ * The {@code XMLTagUtils} class contains static methods to split XML tags and content,
+ * check if XML tags are matched, and create corresponding opening and closing tags.
+ * These utility methods are useful for processing and validating XML structures.
+ * </p>
+ *
+ * <p>Example usage:</p>
+ * <pre>
+ *     List<String> tokens = XMLTagUtils.splitTagsAndContent("&lt;tag&gt;Content&lt;/tag&gt;");
+ *     boolean isMatched = XMLTagUtils.isMatched("&lt;tag&gt;", "&lt;/tag&gt;");
+ *     String closingTag = XMLTagUtils.createClosingTag("&lt;tag&gt;");
+ * </pre>
+ */
 public class XMLTagUtils
 {
     private XMLTagUtils() {}
