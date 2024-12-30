@@ -4,7 +4,7 @@
 
 TextEditor is a JavaFX-based GUI text editor with a range of features for text manipulation, file handling, and graphical visualizations. It allows users to create, open, save, zoom in/out on text, and perform tasks like searching and analyzing text through network graph analysis. The application provides an interactive user experience with support for multiple file formats, including `.txt`, `.xml`, `.json`, and more.
 
-For detailed documentation on how the project works and how to contribute, please refer to the [Documentation](#documentation).
+For detailed documentation on how the project works and how to contribute, please refer to the [Documentation](https://github.com/MoustafaHashem/XMLEditorProject).
 
 ## Features
 
