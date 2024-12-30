@@ -1,7 +1,11 @@
 package com.xml.editor;
 
 import java.util.*;
-
+/**
+ * The {@code XMLChecker} class is used to validate XML content by checking if all tags are properly nested
+ * and matched. It provides functionality to process XML lines, detect errors in tag structure, and generate
+ * annotated lines highlighting any issues.
+ */
 public class XMLChecker
 {
     private final XMLTagsTracker openTags; // Private field to track open tags

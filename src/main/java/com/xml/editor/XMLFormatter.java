@@ -1,7 +1,18 @@
 package com.xml.editor;
 
 import java.util.*;
-
+/**
+ * A utility class for formatting XML content to improve its readability by adding
+ * proper indentation based on the structure of the XML tags.
+ * <p>
+ * The {@code XMLFormatter} class formats the XML lines by adding indentation and
+ * properly nesting the XML tags, making the XML content easier to read.
+ * </p>
+ * <p>Example usage:</p>
+ * <pre>
+ *     List<String> formattedXml = new XMLFormatter(xmlLines).format();
+ * </pre>
+ */
 public class XMLFormatter
 {
 

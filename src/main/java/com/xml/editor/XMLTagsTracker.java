@@ -1,7 +1,26 @@
 package com.xml.editor;
 
 import java.util.*;
-
+/**
+ * The {@code XMLTagsTracker} class is designed to manage and track the occurrence of XML tags.
+ * It uses a stack to keep track of opened tags and a map to record the frequency of each tag.
+ * The class provides methods for pushing and popping tags, checking the status of the stack,
+ * and determining whether tags are repeated or match specific conditions.
+ * <p>
+ * This class is useful for validating and managing XML structures, ensuring proper tag matching
+ * and detecting repeated or unmatched tags during XML parsing or processing.
+ * </p>
+ *
+ * <p>Example usage:</p>
+ * <pre>
+ *     XMLTagsTracker tracker = new XMLTagsTracker();
+ *     tracker.pushTag("&lt;tag1&gt;");
+ *     tracker.pushTag("&lt;tag2&gt;");
+ *     String topTag = tracker.peekTag(); // Returns "&lt;tag2&gt;"
+ *     tracker.popTag(); // Pops "&lt;tag2&gt;"
+ *     boolean isRepeated = tracker.isRepeatedTag("&lt;tag1&gt;"); // Returns true
+ * </pre>
+ */
 public class XMLTagsTracker {
     private final Stack<String> openTagsStack = new Stack<>();
     private final Map<String, Integer> tagFrequency = new TreeMap<>();
